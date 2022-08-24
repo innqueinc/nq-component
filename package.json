@@ -1,0 +1,21 @@
+{
+  "name": "nq-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index",
+  "module": "dist/index",
+  "files": "dist",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/preset-react": "^7.18.6"
+  }
+}

@@ -1,3 +1,4 @@
+import React from "react";
 import Switch from "../Switch";
 
 function InputBooleanSwitch({className, name, object, id}) {

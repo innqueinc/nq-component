@@ -7,7 +7,7 @@ import getIndexes from '../getIndexes';
 
 function InputRelation({
   className,
-  field,
+  name,
   object,
   target,
   isMulti,
@@ -23,18 +23,18 @@ function InputRelation({
   const [value, setValue] = React.useState(); // set default value
 
   React.useEffect(() => {
-    const defaultValue = object[field];
+    const defaultValue = object[name];
 
     if (isMulti) {
       defaultValue && setValue(defaultValue.map(obj => objectToOption(obj, indexes)));
-      object[field] = [];
+      object[name] = [];
     } else {
       defaultValue && setValue(objectToOption(defaultValue, indexes));
     }
-  }, [object, field, indexes]);
+  }, [object, name, indexes]);
 
-  function loadOptions(key, callback) {
-    new GetOption(target, indexes, key, callback, find);
+  function loadOptions(word, callback) {
+    new GetOption(target, indexes, word, callback, find);
   }
 
   function onChange(_value) {
@@ -48,18 +48,18 @@ function InputRelation({
         __operation: 'REMOVE'
       }));
       const objects = [...added, ...removed];
-      object[field] = [...objects, ...object[field].filter(a => !objects.find(b => a.id === b.id))];
+      object[name] = [...objects, ...object[name].filter(a => !objects.find(b => a.id === b.id))];
       setValue(_value);
     } else {
       setValue(_value);
-      object[field] = {
+      object[name] = {
         id: _value.id
       };
     }
   }
 
   return /*#__PURE__*/React.createElement(AsyncSelect, {
-    placeholder: `select ${field}`,
+    placeholder: `select ${name}`,
     classNamePrefix: "custom-form-control",
     menuPortalTarget: document.body,
     loadOptions: loadOptions,

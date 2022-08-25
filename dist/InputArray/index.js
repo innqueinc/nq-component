@@ -6,10 +6,10 @@ const components = {
 };
 
 function InputArray({
-  field,
+  name,
   object
 }) {
-  const [values, setValues] = React.useState((object[field] || []).map(createOption));
+  const [values, setValues] = React.useState((object[name] || []).map(createOption));
   const [value, setValue] = React.useState('');
 
   function onChange(_values) {
@@ -27,7 +27,7 @@ function InputArray({
         e.preventDefault();
         setValues([...values, createOption(value)]);
         setValue('');
-        object[field] = values.map(v => v.value);
+        object[name] = values.map(v => v.value);
     }
   }
 

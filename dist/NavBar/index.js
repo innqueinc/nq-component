@@ -42,13 +42,13 @@ function NavBar({
   })), /*#__PURE__*/React.createElement("a", {
     href: "# ",
     onClick: titleClick,
-    className: "navbar-brand   me-auto"
-  }, title && title, !title && /*#__PURE__*/React.createElement("img", {
-    className: "img-fluid mb-1",
-    width: "150",
+    className: "navbar-brand me-auto"
+  }, logo && /*#__PURE__*/React.createElement("img", {
+    className: "w-auto me-2",
+    height: "38",
     src: logo,
     alt: "logo"
-  })), children));
+  }), title && title), children));
 }
 
 NavBar.defaultProps = defaultProps;

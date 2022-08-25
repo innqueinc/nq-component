@@ -29,12 +29,12 @@ function NavBar({className, onToggle, icon, logo, children, title, titleClick}) 
                     className="btn btn-sm btn-link fs-4 ps-0 text-dark">
                     <i className={icon}></i>
                 </button>
-                <a href="# " onClick={titleClick} className="navbar-brand   me-auto">
+                <a href="# " onClick={titleClick} className="navbar-brand me-auto">
                     {
-                        title && title
+                        logo && <img className="w-auto me-2" height="38" src={logo} alt="logo"/>
                     }
                     {
-                        !title && <img className="img-fluid mb-1" width="150" src={logo} alt="logo"/>
+                        title && title
                     }
                 </a>
                 {

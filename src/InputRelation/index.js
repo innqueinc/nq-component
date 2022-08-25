@@ -24,8 +24,8 @@ function InputRelation({className, name, object, target, isMulti, schemas, find}
         }
     }, [object, name, indexes]);
 
-    function loadOptions(key, callback) {
-        new GetOption(target, indexes, key, callback, find);
+    function loadOptions(word, callback) {
+        new GetOption(target, indexes, word, callback, find);
     }
 
     function onChange(_value) {

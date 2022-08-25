@@ -1,4 +1,4 @@
-import Progress from "../Progress";
+import React from "react";
 import classNames from "../classNames";
 import Spinner from "../Spinner";
 

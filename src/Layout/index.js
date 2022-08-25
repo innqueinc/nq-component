@@ -10,7 +10,6 @@ function Layout({children,...props}) {
             setCollapse,
         };
     }
-
     return <Context.Provider value={getValue()}>{children}</Context.Provider>;
 }
 

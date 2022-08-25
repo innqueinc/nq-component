@@ -6,7 +6,7 @@ const defaultProps = {
     type: 'password',
 };
 
-function InputPassword({className, name, object, hidden, ...props}) {
+function InputPassword({className, name, object, hidden, required, ...props}) {
     function onInput(e) {
         const value = e.target.value;
         object[name] = value;
@@ -34,6 +34,7 @@ function InputPassword({className, name, object, hidden, ...props}) {
                 className={classNames('form-control border-end-0 pe-0', className)}
                 name={name}
                 onInput={onInput}
+                required={!object.id && required}
                 {...props}/>
             <button
                 type="button"

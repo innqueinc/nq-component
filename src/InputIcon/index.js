@@ -1,3 +1,4 @@
+import React from 'react';
 import Select from 'react-select';
 import IconItem from "./IconItem";
 const icons = [

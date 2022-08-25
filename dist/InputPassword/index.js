@@ -12,6 +12,7 @@ function InputPassword({
   name,
   object,
   hidden,
+  required,
   ...props
 }) {
   function onInput(e) {
@@ -41,7 +42,8 @@ function InputPassword({
     defaultValue: value,
     className: classNames('form-control border-end-0 pe-0', className),
     name: name,
-    onInput: onInput
+    onInput: onInput,
+    required: !object.id && required
   }, props)), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "btn btn-link text-muted shadow-none bi bi-eye-slash",

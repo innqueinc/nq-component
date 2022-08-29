@@ -9,7 +9,7 @@ const defaultProps = {
 
 function InputPassword({
   className,
-  name,
+  field,
   object,
   hidden,
   required,
@@ -17,7 +17,7 @@ function InputPassword({
 }) {
   function onInput(e) {
     const value = e.target.value;
-    object[name] = value;
+    object[field] = value;
   }
 
   function showPasswordClick(e) {
@@ -34,14 +34,14 @@ function InputPassword({
     }
   }
 
-  const value = object[name];
+  const value = object[field];
   return /*#__PURE__*/React.createElement("div", {
     className: "input-group"
   }, /*#__PURE__*/React.createElement("input", _extends({
     autoComplete: "new-password",
     defaultValue: value,
     className: classNames('form-control border-end-0 pe-0', className),
-    name: name,
+    name: field,
     onInput: onInput,
     required: !object.id && required
   }, props)), /*#__PURE__*/React.createElement("button", {

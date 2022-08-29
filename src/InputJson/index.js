@@ -6,14 +6,14 @@ const defaultProps = {
     type: 'text',
 };
 
-function InputJson({className, name, object, options, ...props}) {
-    const [value, setValue] = React.useState(JSON.stringify(object[name], null, 4) || '');
+function InputJson({className, field, object, options, ...props}) {
+    const [value, setValue] = React.useState(JSON.stringify(object[field], null, 4) || '');
 
     function onInput(e) {
         const value = e.target.value;
         setValue(value);
         try {
-            Object.assign(object[name], JSON.parse(value));
+            Object.assign(object[field], JSON.parse(value));
         } catch (error) {
             // ignore error
         }
@@ -25,7 +25,7 @@ function InputJson({className, name, object, options, ...props}) {
              <textarea
                  defaultValue={value}
                  className={classNames('form-control', className)}
-                 name={name}
+                 name={field}
                  onInput={onInput}
                  {...props}/>
             {maxLength && <span className="form-text fs-xs">{maxLength - value.length} characters remaining</span>}

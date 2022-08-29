@@ -6,20 +6,20 @@ const defaultProps = {
     type: 'tel',
 };
 
-function InputNumber({className, name, options, object, ...props}) {
+function InputNumber({className, field, options, object, ...props}) {
     function onInput(e) {
         e.target.value = e.target.value.replace(/[^\d]/gi, '');
         if (e.target.value === '' || !e.target.validity.valid) {
             return;
         }
-        object[name] = parseInt(e.target.value);
+        object[field] = parseInt(e.target.value);
     }
-    const value = object[name];
+    const value = object[field];
     return (
         <input
             className={classNames('form-control', className)}
             defaultValue={value}
-            name={name}
+            name={field}
             onInput={onInput}
             {...props}/>
     )

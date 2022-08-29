@@ -5,12 +5,12 @@ const icons = ["bi bi-123", "bi bi-activity", "bi bi-alarm", "bi bi-alarm-fill",
 
 function InputIcon({
   className,
-  name,
+  field,
   object,
   ...props
 }) {
   function onChange(values) {
-    object[name] = values.value;
+    object[field] = values.value;
   }
 
   return /*#__PURE__*/React.createElement(Select, {

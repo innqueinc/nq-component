@@ -9,21 +9,21 @@ const defaultProps = {
 
 function InputString({
   className,
-  name,
+  field,
   options,
   object,
   ...props
 }) {
   function onInput(e) {
     const value = e.target.value;
-    object[name] = value;
+    object[field] = value;
   }
 
-  const value = object[name];
+  const value = object[field];
   return /*#__PURE__*/React.createElement("input", _extends({
     defaultValue: value,
     className: classNames('form-control', className),
-    name: name,
+    name: field,
     placeholder: name,
     onInput: onInput
   }, props));

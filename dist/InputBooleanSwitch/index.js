@@ -3,15 +3,15 @@ import Switch from "../Switch";
 
 function InputBooleanSwitch({
   className,
-  name,
+  field,
   object,
   id
 }) {
   function onChange(checked) {
-    object[name] = checked;
+    object[field] = checked;
   }
 
-  const value = object[name];
+  const value = object[field];
   return /*#__PURE__*/React.createElement(Switch, {
     className: className,
     onChange: onChange,

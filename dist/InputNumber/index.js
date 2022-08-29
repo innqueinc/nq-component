@@ -9,7 +9,7 @@ const defaultProps = {
 
 function InputNumber({
   className,
-  name,
+  field,
   options,
   object,
   ...props
@@ -21,14 +21,14 @@ function InputNumber({
       return;
     }
 
-    object[name] = parseInt(e.target.value);
+    object[field] = parseInt(e.target.value);
   }
 
-  const value = object[name];
+  const value = object[field];
   return /*#__PURE__*/React.createElement("input", _extends({
     className: classNames('form-control', className),
     defaultValue: value,
-    name: name,
+    name: field,
     onInput: onInput
   }, props));
 }

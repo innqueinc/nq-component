@@ -5,12 +5,12 @@ const defaultProps = {
     object: {},
     type: 'text',
 };
-function InputText({className, name, options, object, ...props}) {
-    const [value, setValue] = React.useState(object[name] || '');
+function InputText({className, field, options, object, ...props}) {
+    const [value, setValue] = React.useState(object[field] || '');
     function onInput(e) {
         const value = e.target.value;
         setValue(value);
-        object[name] = value;
+        object[field] = value;
     }
     const maxLength = props.maxLength;
     return (
@@ -18,7 +18,7 @@ function InputText({className, name, options, object, ...props}) {
              <textarea
                  defaultValue={value}
                  className={classNames('form-control', className)}
-                 name={name}
+                 name={field}
                  onInput={onInput}
                  {...props}/>
             {maxLength && <span className="form-text fs-xs">{maxLength - value.length} characters remaining</span>}

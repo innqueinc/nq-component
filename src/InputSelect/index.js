@@ -1,13 +1,13 @@
 import React from "react";
 import classNames from "../classNames";
 
-function InputSelect({className, name, object, options=[], onChange, ...props}) {
+function InputSelect({className, field, object, options=[], onChange, ...props}) {
     function change(e) {
         const value = e.target.value;
-        object[name] = value;
+        object[field] = value;
         onChange && onChange(value);
     }
-    const value = object[name];
+    const value = object[field];
     return (
         <select
             className={classNames('form-select fs-sm', className)}

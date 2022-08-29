@@ -7,7 +7,7 @@ import getIndexes from '../getIndexes';
 
 function InputRelation({
   className,
-  name,
+  field,
   object,
   target,
   isMulti,
@@ -23,11 +23,11 @@ function InputRelation({
   const [value, setValue] = React.useState(); // set default value
 
   React.useEffect(() => {
-    const defaultValue = object[name];
+    const defaultValue = object[field];
 
     if (isMulti) {
       defaultValue && setValue(defaultValue.map(obj => objectToOption(obj, indexes)));
-      object[name] = [];
+      object[field] = [];
     } else {
       defaultValue && setValue(objectToOption(defaultValue, indexes));
     }
@@ -48,11 +48,11 @@ function InputRelation({
         __operation: 'REMOVE'
       }));
       const objects = [...added, ...removed];
-      object[name] = [...objects, ...object[name].filter(a => !objects.find(b => a.id === b.id))];
+      object[field] = [...objects, ...object[field].filter(a => !objects.find(b => a.id === b.id))];
       setValue(_value);
     } else {
       setValue(_value);
-      object[name] = {
+      object[field] = {
         id: _value.id
       };
     }

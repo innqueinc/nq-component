@@ -6,10 +6,10 @@ const defaultProps = {
     type: 'password',
 };
 
-function InputPassword({className, name, object, hidden, required, ...props}) {
+function InputPassword({className, field, object, hidden, required, ...props}) {
     function onInput(e) {
         const value = e.target.value;
-        object[name] = value;
+        object[field] = value;
     }
 
     function showPasswordClick(e) {
@@ -25,14 +25,14 @@ function InputPassword({className, name, object, hidden, required, ...props}) {
         }
     }
 
-    const value = object[name];
+    const value = object[field];
     return (
         <div className="input-group">
             <input
                 autoComplete="new-password"
                 defaultValue={value}
                 className={classNames('form-control border-end-0 pe-0', className)}
-                name={name}
+                name={field}
                 onInput={onInput}
                 required={!object.id && required}
                 {...props}/>

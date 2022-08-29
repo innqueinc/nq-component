@@ -1,11 +1,11 @@
 import React from "react";
 import Switch from "../Switch";
 
-function InputBooleanSwitch({className, name, object, id}) {
+function InputBooleanSwitch({className, field, object, id}) {
     function onChange(checked) {
-        object[name] = checked;
+        object[field] = checked;
     }
-    const value = object[name];
+    const value = object[field];
     return (
         <Switch
             className={className}

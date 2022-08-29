@@ -7,7 +7,7 @@ const components = {
 };
 
 function InputArray({name, object}) {
-    const [values, setValues] = React.useState((object[name] || []).map(createOption));
+    const [values, setValues] = React.useState((object[field] || []).map(createOption));
     const [value, setValue] = React.useState('');
     function onChange(_values) {
         setValues(_values);
@@ -22,7 +22,7 @@ function InputArray({name, object}) {
                 e.preventDefault();
                 setValues([...values, createOption(value)]);
                 setValue('');
-                object[name] = values.map(v => v.value);
+                object[field] = values.map(v => v.value);
         }
     }
 

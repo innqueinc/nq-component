@@ -6,18 +6,18 @@ const defaultProps = {
     type: 'text',
 };
 
-function InputString({className, name, options, object, ...props}) {
+function InputString({className, field, options, object, ...props}) {
     function onInput(e) {
         const value = e.target.value;
-        object[name] = value;
+        object[field] = value;
     }
 
-    const value = object[name];
+    const value = object[field];
     return (
         <input
             defaultValue={value}
             className={classNames('form-control', className)}
-            name={name}
+            name={field}
             placeholder={name}
             onInput={onInput}
             {...props}

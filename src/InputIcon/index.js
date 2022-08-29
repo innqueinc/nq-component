@@ -1672,9 +1672,9 @@ const icons = [
     "bi bi-zoom-out"
 ]
 
-function InputIcon({className, name, object, ...props}) {
+function InputIcon({className, field, object, ...props}) {
     function onChange(values) {
-        object[name] = values.value;
+        object[field] = values.value;
     }
 
     return (

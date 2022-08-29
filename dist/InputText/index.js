@@ -9,24 +9,24 @@ const defaultProps = {
 
 function InputText({
   className,
-  name,
+  field,
   options,
   object,
   ...props
 }) {
-  const [value, setValue] = React.useState(object[name] || '');
+  const [value, setValue] = React.useState(object[field] || '');
 
   function onInput(e) {
     const value = e.target.value;
     setValue(value);
-    object[name] = value;
+    object[field] = value;
   }
 
   const maxLength = props.maxLength;
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("textarea", _extends({
     defaultValue: value,
     className: classNames('form-control', className),
-    name: name,
+    name: field,
     onInput: onInput
   }, props)), maxLength && /*#__PURE__*/React.createElement("span", {
     className: "form-text fs-xs"

@@ -9,19 +9,19 @@ const defaultProps = {
 
 function InputJson({
   className,
-  name,
+  field,
   object,
   options,
   ...props
 }) {
-  const [value, setValue] = React.useState(JSON.stringify(object[name], null, 4) || '');
+  const [value, setValue] = React.useState(JSON.stringify(object[field], null, 4) || '');
 
   function onInput(e) {
     const value = e.target.value;
     setValue(value);
 
     try {
-      Object.assign(object[name], JSON.parse(value));
+      Object.assign(object[field], JSON.parse(value));
     } catch (error) {// ignore error
     }
   }
@@ -30,7 +30,7 @@ function InputJson({
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("textarea", _extends({
     defaultValue: value,
     className: classNames('form-control', className),
-    name: name,
+    name: field,
     onInput: onInput
   }, props)), maxLength && /*#__PURE__*/React.createElement("span", {
     className: "form-text fs-xs"

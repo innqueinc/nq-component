@@ -9,19 +9,19 @@ const defaultProps = {
 
 function InputDate({
   className,
-  name,
+  field,
   object,
   ...props
 }) {
   function onInput(e) {
     const value = e.target.value;
-    object[name] = value;
+    object[field] = value;
   }
 
   return /*#__PURE__*/React.createElement("input", _extends({
-    value: object[name] && object[name].slice(0, 10),
+    value: object[field] && object[field].slice(0, 10),
     className: classNames('form-control', className),
-    name: name,
+    name: field,
     onInput: onInput
   }, props));
 }

@@ -5,7 +5,7 @@ import classNames from "../classNames";
 
 function InputSelect({
   className,
-  name,
+  field,
   object,
   options = [],
   onChange,
@@ -13,11 +13,11 @@ function InputSelect({
 }) {
   function change(e) {
     const value = e.target.value;
-    object[name] = value;
+    object[field] = value;
     onChange && onChange(value);
   }
 
-  const value = object[name];
+  const value = object[field];
   return /*#__PURE__*/React.createElement("select", _extends({
     className: classNames('form-select fs-sm', className),
     onChange: change

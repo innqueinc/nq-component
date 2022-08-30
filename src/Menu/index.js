@@ -25,7 +25,7 @@ function Item(menu) {
 
 Item.defaultProps = defaultProps;
 
-function ItemChild({name, icon, route}) {
+function ItemChild({name, label, icon, route}) {
     let key = name;
     return (
         <React.Fragment key={key}>
@@ -35,7 +35,7 @@ function ItemChild({name, icon, route}) {
                     className="nav-link font-size-sm">
                     <div className="d-inline-block">
                         <i className={icon}></i>
-                        <span className="ms-2">{name}</span>
+                        <span className="ms-2">{label || name}</span>
                     </div>
                     <div className="float-end p-1">
                         <i className="bi bi-chevron-down"></i>

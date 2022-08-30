@@ -4,7 +4,6 @@ import NavItem from './NavItem';
 import IconText from './IconText';
 
 function NavItemCollapse({ children, id, ...props }) {
-  console.log(children[0]);
   let href = '#' + id;
   return (
     <NavItem>

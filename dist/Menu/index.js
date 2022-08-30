@@ -34,6 +34,7 @@ Item.defaultProps = defaultProps;
 
 function ItemChild({
   name,
+  label,
   icon,
   route
 }) {
@@ -51,7 +52,7 @@ function ItemChild({
     className: icon
   }), /*#__PURE__*/React.createElement("span", {
     className: "ms-2"
-  }, name)), /*#__PURE__*/React.createElement("div", {
+  }, label || name)), /*#__PURE__*/React.createElement("div", {
     className: "float-end p-1"
   }, /*#__PURE__*/React.createElement("i", {
     className: "bi bi-chevron-down"

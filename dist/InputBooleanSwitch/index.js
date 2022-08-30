@@ -16,7 +16,7 @@ function InputBooleanSwitch({
     className: className,
     onChange: onChange,
     checked: value,
-    label: name,
+    label: field,
     id: id
   });
 }

@@ -6,7 +6,7 @@ import Checkbox from "../Checkbox";
 import camelToTitleCase from "../camelToTitleCase";
 
 
-function Table({fields, objects, hasMore,progress, onItemClick, next, selected, onSelect, onSelectAll}) {
+function Table({fields, objects, hasMore, progress, onItemClick, next, selected, onSelect, onSelectAll}) {
     return (
         <InfiniteScroll
             loadMore={next}
@@ -76,7 +76,6 @@ function Table({fields, objects, hasMore,progress, onItemClick, next, selected, 
                                             </td>
                                         );
                                     })}
-
                                 </tr>
                             );
                         })
@@ -84,7 +83,8 @@ function Table({fields, objects, hasMore,progress, onItemClick, next, selected, 
                     {
                         progress && (
                             <tr>
-                                <td colSpan={Object.keys(fields).length + 1}><Progress className="fs-sm">Loading ...</Progress></td>
+                                <td colSpan={Object.keys(fields).length + 1}><Progress className="fs-sm">Loading
+                                    ...</Progress></td>
                             </tr>
                         )
                     }

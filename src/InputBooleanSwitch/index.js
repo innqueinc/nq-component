@@ -11,7 +11,7 @@ function InputBooleanSwitch({className, field, object, id}) {
             className={className}
             onChange={onChange}
             checked={value}
-            label={name}
+            label={field}
             id={id}
         />
     )

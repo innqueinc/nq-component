@@ -8,7 +8,6 @@ function NavItemCollapse({
   id,
   ...props
 }) {
-  console.log(children[0]);
   let href = '#' + id;
   return /*#__PURE__*/React.createElement(NavItem, null, /*#__PURE__*/React.createElement("a", {
     className: "nav-link text-white accordion-toggle font-size-sm collapsed",

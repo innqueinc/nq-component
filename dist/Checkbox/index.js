@@ -7,7 +7,8 @@ function noop() {}
 
 const defaultProps = {
   onChange: noop,
-  id: 'check-default'
+  id: 'check-default',
+  type: 'checkbox'
 };
 const Checkbox = /*#__PURE__*/React.forwardRef(function Checkbox({
   className,
@@ -15,20 +16,21 @@ const Checkbox = /*#__PURE__*/React.forwardRef(function Checkbox({
   onChange,
   checked,
   label,
+  type,
   ...props
 }, ref) {
-  const classes = classNames('custom-control custom-checkbox', className);
+  const classes = classNames('form-check', className);
   return /*#__PURE__*/React.createElement("div", {
     className: classes
   }, /*#__PURE__*/React.createElement("input", _extends({
-    type: "checkbox",
+    type: type,
     ref: ref,
-    className: "custom-control-input",
+    className: "form-check-input",
     checked: checked,
     onChange: e => onChange(e.target.checked),
     id: id
   }, props)), /*#__PURE__*/React.createElement("label", {
-    className: "custom-control-label",
+    className: "form-check-label",
     htmlFor: id
   }, label));
 });

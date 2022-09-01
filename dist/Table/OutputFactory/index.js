@@ -20,12 +20,11 @@ function OutputFactory({
         field: field,
         object: object
       }, options));
-
-    case 'Date':
-      return /*#__PURE__*/React.createElement(OutputDate, _extends({
-        field: field,
-        object: object
-      }, options));
+    // case 'Date':
+    //     return <OutputDate
+    //         field={field}
+    //         object={object}
+    //         {...options}/>;
     // case 'Pointer':
     //     return <OutputPointer
     //         field={field}

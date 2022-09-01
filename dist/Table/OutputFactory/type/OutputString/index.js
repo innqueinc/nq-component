@@ -5,7 +5,7 @@ function OutputString({
 }) {
   const value = object[field];
 
-  if (value) {
+  if (value && typeof value !== 'object') {
     return value;
   }
 

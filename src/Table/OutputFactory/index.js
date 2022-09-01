@@ -14,11 +14,11 @@ function OutputFactory({type, field, object, ...options}) {
                 field={field}
                 object={object}
                 {...options}/>;
-        case 'Date':
-            return <OutputDate
-                field={field}
-                object={object}
-                {...options}/>;
+        // case 'Date':
+        //     return <OutputDate
+        //         field={field}
+        //         object={object}
+        //         {...options}/>;
         // case 'Pointer':
         //     return <OutputPointer
         //         field={field}

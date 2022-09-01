@@ -6,7 +6,7 @@ const components = {
     DropdownIndicator: null,
 };
 
-function InputArray({name, object}) {
+function InputArray({field, object}) {
     const [values, setValues] = React.useState((object[field] || []).map(createOption));
     const [value, setValue] = React.useState('');
     function onChange(_values) {

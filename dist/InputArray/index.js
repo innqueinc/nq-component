@@ -6,7 +6,7 @@ const components = {
 };
 
 function InputArray({
-  name,
+  field,
   object
 }) {
   const [values, setValues] = React.useState((object[field] || []).map(createOption));

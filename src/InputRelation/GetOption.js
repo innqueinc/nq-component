@@ -1,7 +1,8 @@
 import objectToOption from "./objectToOption";
 
-function GetOption(targetClass, indexes, word, callback, find) {
-    this.query = {count: true, limit: 20, where: {}};
+function GetOption(targetClass, indexes, word, callback, find, where) {
+    this.query = {count: true, limit: 20, where: where};
+
     if (word && indexes.length > 0) {
         this.query.where['$or'] = indexes.map(index => {
             const or = {};

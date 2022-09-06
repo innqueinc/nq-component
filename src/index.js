@@ -26,5 +26,7 @@ export {default as NavBar} from "./NavBar";
 export {default as OffCanvas} from "./OffCanvas";
 export {default as Layout} from "./Layout";
 export {default as Switch} from "./Switch";
+export {default as InputBooleanCheckbox} from "./InputBooleanCheckbox";
+export {default as OutputTable} from "./OutputTable";
 
 

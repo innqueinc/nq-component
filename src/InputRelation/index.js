@@ -5,7 +5,11 @@ import objectToOption from './objectToOption';
 import GetOption from './GetOption';
 import getIndexes from '../getIndexes';
 
-function InputRelation({className, field, object, target, isMulti, schemas, find}) {
+const defaultProps = {
+    where: {}
+}
+
+function InputRelation({className, field, object, target, isMulti, schemas, find, where}) {
     // get schema
     const schema = schemas.find(s => s.name === target);
     const indexes = React.useMemo(() => {
@@ -25,7 +29,7 @@ function InputRelation({className, field, object, target, isMulti, schemas, find
     }, [object, name, indexes]);
 
     function loadOptions(word, callback) {
-        new GetOption(target, indexes, word, callback, find);
+        new GetOption(target, indexes, word, callback, find, where);
     }
 
     function onChange(_value) {
@@ -59,5 +63,7 @@ function InputRelation({className, field, object, target, isMulti, schemas, find
         />
     );
 }
+
+InputRelation.defaultProps = defaultProps;
 
 export default InputRelation;

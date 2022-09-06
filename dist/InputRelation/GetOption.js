@@ -1,10 +1,10 @@
 import objectToOption from "./objectToOption";
 
-function GetOption(targetClass, indexes, word, callback, find) {
+function GetOption(targetClass, indexes, word, callback, find, where) {
   this.query = {
     count: true,
     limit: 20,
-    where: {}
+    where: where
   };
 
   if (word && indexes.length > 0) {

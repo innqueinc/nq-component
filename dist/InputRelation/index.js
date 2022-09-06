@@ -4,6 +4,9 @@ import classNames from "../classNames";
 import objectToOption from './objectToOption';
 import GetOption from './GetOption';
 import getIndexes from '../getIndexes';
+const defaultProps = {
+  where: {}
+};
 
 function InputRelation({
   className,
@@ -12,7 +15,8 @@ function InputRelation({
   target,
   isMulti,
   schemas,
-  find
+  find,
+  where
 }) {
   // get schema
   const schema = schemas.find(s => s.name === target);
@@ -34,7 +38,7 @@ function InputRelation({
   }, [object, name, indexes]);
 
   function loadOptions(word, callback) {
-    new GetOption(target, indexes, word, callback, find);
+    new GetOption(target, indexes, word, callback, find, where);
   }
 
   function onChange(_value) {
@@ -72,4 +76,5 @@ function InputRelation({
   });
 }
 
+InputRelation.defaultProps = defaultProps;
 export default InputRelation;

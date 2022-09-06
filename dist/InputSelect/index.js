@@ -2,6 +2,7 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 import React from "react";
 import classNames from "../classNames";
+import camelToTitleCase from "../camelToTitleCase";
 
 function InputSelect({
   className,
@@ -19,15 +20,16 @@ function InputSelect({
 
   const value = object[field];
   return /*#__PURE__*/React.createElement("select", _extends({
-    className: classNames('form-select fs-sm', className),
+    className: classNames('form-select', className),
     onChange: change
   }, props, {
-    defaultValue: value
+    defaultValue: value || ""
   }), /*#__PURE__*/React.createElement("option", {
     value: "",
     disabled: true
-  }, "Select ", name), options.map((o, i) => /*#__PURE__*/React.createElement("option", {
-    key: i
+  }, "Select ", camelToTitleCase(field)), options.map((o, i) => /*#__PURE__*/React.createElement("option", {
+    key: i,
+    value: o
   }, o)));
 }
 

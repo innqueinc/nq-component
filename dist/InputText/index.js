@@ -14,14 +14,12 @@ function InputText({
   object,
   ...props
 }) {
-  const [value, setValue] = React.useState(object[field] || '');
-
   function onInput(e) {
     const value = e.target.value;
-    setValue(value);
     object[field] = value;
   }
 
+  const value = object[field];
   const maxLength = props.maxLength;
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("textarea", _extends({
     defaultValue: value,

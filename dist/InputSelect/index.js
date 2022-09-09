@@ -3,6 +3,9 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 import React from "react";
 import classNames from "../classNames";
 import camelToTitleCase from "../camelToTitleCase";
+const defaultProps = {
+  field: ''
+};
 
 function InputSelect({
   className,
@@ -33,4 +36,5 @@ function InputSelect({
   }, o)));
 }
 
+InputSelect.defaultProps = defaultProps;
 export default InputSelect;

@@ -1,14 +1,42 @@
 import React from "react";
-import OutputFactory from "./OutputFactory";
+import OutputFactory from "../OutputFactory";
 import Progress from "../Progress";
 import InfiniteScroll from "react-infinite-scroller";
 import Checkbox from "../Checkbox";
 import camelToTitleCase from "../camelToTitleCase";
 
+const noop = () => {
+}
+const defaultProps = {
+    fields: {},
+    objects: [],
+    excludeFields: [],
+    selected: [],
+    hasMore: false,
+    progress: false,
+    onItemClick: noop,
+    onSelect: noop,
+    onSelectAll: noop,
+    readOnly: false
+}
 
-function Table({fields, objects, hasMore, progress, onItemClick, next, selected, onSelect, onSelectAll}) {
+function Table({
+                   className,
+                   fields,
+                   objects,
+                   hasMore,
+                   progress,
+                   onItemClick,
+                   next,
+                   selected,
+                   onSelect,
+                   onSelectAll,
+                   excludeFields,
+                   readOnly
+               }) {
     return (
         <InfiniteScroll
+            className={className}
             loadMore={next}
             hasMore={hasMore}
             initialLoad={true}>
@@ -16,17 +44,20 @@ function Table({fields, objects, hasMore, progress, onItemClick, next, selected,
                 <table className="table mb-0 w-100 table-striped">
                     <thead className="table-dark">
                     <tr>
-                        <th>
-                            <Checkbox
-                                className="align-middle"
-                                id="check_all"
-                                checked={objects.length === selected.length && objects.length !== 0}
-                                onChange={checked => onSelectAll(checked)}
-                            />
-                        </th>
+                        {!readOnly && (
+                            <th>
+                                <Checkbox
+                                    className="align-middle"
+                                    id="check_all"
+                                    checked={objects.length === selected.length && objects.length !== 0}
+                                    onChange={checked => onSelectAll(checked)}
+                                />
+                            </th>
+                        )}
                         {Object.keys(fields).map((field) => {
                             const {type, ...options} = fields[field];
                             if (options.hasOwnProperty('read') && !options.read) return null;
+                            if (excludeFields.includes(field)) return null;
                             const label = options.label || camelToTitleCase(field);
                             return (
                                 <th key={field} className="fs-xs align-middle text-nowrap">{label}</th>
@@ -50,16 +81,19 @@ function Table({fields, objects, hasMore, progress, onItemClick, next, selected,
                             const checked = selected.includes(object);
                             return (
                                 <tr key={id}>
-                                    <th className="align-middle">
-                                        <Checkbox
-                                            checked={checked}
-                                            id={'check_' + id}
-                                            onChange={() => onSelect(index)}
-                                        />
-                                    </th>
+                                    {!readOnly && (
+                                        <th className="align-middle">
+                                            <Checkbox
+                                                checked={checked}
+                                                id={'check_' + id}
+                                                onChange={() => onSelect(index)}
+                                            />
+                                        </th>
+                                    )}
                                     {Object.keys(fields).map((field, i) => {
                                         const options = fields[field];
                                         if (options.hasOwnProperty('read') && !options.read) return null;
+                                        if (excludeFields.includes(field)) return null;
                                         return (
                                             <td key={field}
                                                 className="fs-sm text-truncate"
@@ -95,4 +129,5 @@ function Table({fields, objects, hasMore, progress, onItemClick, next, selected,
     )
 }
 
+Table.defaultProps = defaultProps;
 export default Table;

@@ -5,13 +5,14 @@ const defaultProps = {
     object: {},
     type: 'text',
 };
+
 function InputText({className, field, options, object, ...props}) {
-    const [value, setValue] = React.useState(object[field] || '');
     function onInput(e) {
         const value = e.target.value;
-        setValue(value);
         object[field] = value;
     }
+
+    const value = object[field];
     const maxLength = props.maxLength;
     return (
         <>

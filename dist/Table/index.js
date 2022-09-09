@@ -1,13 +1,29 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 import React from "react";
-import OutputFactory from "./OutputFactory";
+import OutputFactory from "../OutputFactory";
 import Progress from "../Progress";
 import InfiniteScroll from "react-infinite-scroller";
 import Checkbox from "../Checkbox";
 import camelToTitleCase from "../camelToTitleCase";
 
+const noop = () => {};
+
+const defaultProps = {
+  fields: {},
+  objects: [],
+  excludeFields: [],
+  selected: [],
+  hasMore: false,
+  progress: false,
+  onItemClick: noop,
+  onSelect: noop,
+  onSelectAll: noop,
+  readOnly: false
+};
+
 function Table({
+  className,
   fields,
   objects,
   hasMore,
@@ -16,9 +32,12 @@ function Table({
   next,
   selected,
   onSelect,
-  onSelectAll
+  onSelectAll,
+  excludeFields,
+  readOnly
 }) {
   return /*#__PURE__*/React.createElement(InfiniteScroll, {
+    className: className,
     loadMore: next,
     hasMore: hasMore,
     initialLoad: true
@@ -28,7 +47,7 @@ function Table({
     className: "table mb-0 w-100 table-striped"
   }, /*#__PURE__*/React.createElement("thead", {
     className: "table-dark"
-  }, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement(Checkbox, {
+  }, /*#__PURE__*/React.createElement("tr", null, !readOnly && /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement(Checkbox, {
     className: "align-middle",
     id: "check_all",
     checked: objects.length === selected.length && objects.length !== 0,
@@ -39,6 +58,7 @@ function Table({
       ...options
     } = fields[field];
     if (options.hasOwnProperty('read') && !options.read) return null;
+    if (excludeFields.includes(field)) return null;
     const label = options.label || camelToTitleCase(field);
     return /*#__PURE__*/React.createElement("th", {
       key: field,
@@ -54,7 +74,7 @@ function Table({
     const checked = selected.includes(object);
     return /*#__PURE__*/React.createElement("tr", {
       key: id
-    }, /*#__PURE__*/React.createElement("th", {
+    }, !readOnly && /*#__PURE__*/React.createElement("th", {
       className: "align-middle"
     }, /*#__PURE__*/React.createElement(Checkbox, {
       checked: checked,
@@ -63,6 +83,7 @@ function Table({
     })), Object.keys(fields).map((field, i) => {
       const options = fields[field];
       if (options.hasOwnProperty('read') && !options.read) return null;
+      if (excludeFields.includes(field)) return null;
       return /*#__PURE__*/React.createElement("td", {
         key: field,
         className: "fs-sm text-truncate",
@@ -83,4 +104,5 @@ function Table({
   }, "Loading ...")))))));
 }
 
+Table.defaultProps = defaultProps;
 export default Table;

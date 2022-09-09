@@ -2,6 +2,10 @@ import React from "react";
 import classNames from "../classNames";
 import camelToTitleCase from "../camelToTitleCase";
 
+const defaultProps = {
+    field: ''
+}
+
 function InputSelect({className, field, object, options = [], onChange, ...props}) {
     function change(e) {
         const value = e.target.value;
@@ -25,5 +29,7 @@ function InputSelect({className, field, object, options = [], onChange, ...props
         </select>
     )
 }
+
+InputSelect.defaultProps = defaultProps;
 
 export default InputSelect;

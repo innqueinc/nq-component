@@ -24,7 +24,7 @@ function InputRelation({
     const items = getIndexes(schema.fields);
     return items.length > 0 ? items : ['name'];
   }, [schema.fields]);
-  const [value, setValue] = React.useState(); // set default value
+  const [value, setValue] = React.useState([]); // set default value
 
   React.useEffect(() => {
     const defaultValue = object[field];

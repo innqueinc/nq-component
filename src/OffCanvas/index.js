@@ -8,7 +8,7 @@ let lastX;
 let pointer;
 const defaultProps = {}
 
-function OffCanvas({children, signOutClick}) {
+function OffCanvas({children}) {
     const ref = React.useRef();
     const {collapsed, setCollapse} = React.useContext(Layout.Context);
     const location = useLocation();
@@ -63,17 +63,7 @@ function OffCanvas({children, signOutClick}) {
                 data-bs-backdrop="true"
                 data-bs-scroll="false"
                 id="offcanvas">
-                <div className="offcanvas-body">
-                    {children}
-                </div>
-                <div className="my-2">
-                    <button
-                        className="nav-link text-muted btn btn-link"
-                        onClick={signOutClick}>
-                        <i className="bi bi-power"></i>
-                        <span className="ms-2 fw-bold small">Log out</span>
-                    </button>
-                </div>
+                {children}
             </div>
             {/*<Backdrop isOpen={true}/>*/}
         </>

@@ -70,18 +70,7 @@ function OffCanvas({
     "data-bs-backdrop": "true",
     "data-bs-scroll": "false",
     id: "offcanvas"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "offcanvas-body"
-  }, children), /*#__PURE__*/React.createElement("div", {
-    className: "my-2"
-  }, /*#__PURE__*/React.createElement("button", {
-    className: "nav-link text-muted btn btn-link",
-    onClick: signOutClick
-  }, /*#__PURE__*/React.createElement("i", {
-    className: "bi bi-power"
-  }), /*#__PURE__*/React.createElement("span", {
-    className: "ms-2 fw-bold small"
-  }, "Log out")))));
+  }, children));
 }
 
 OffCanvas.defaultProps = defaultProps;

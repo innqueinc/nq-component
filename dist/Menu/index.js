@@ -21,7 +21,7 @@ function Item(menu) {
     className: "nav-item",
     key: route
   }, /*#__PURE__*/React.createElement(NavLink, {
-    className: "nav-link",
+    className: "nav-link text-truncate",
     to: route
   }, /*#__PURE__*/React.createElement("i", {
     className: icon

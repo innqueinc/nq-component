@@ -26,7 +26,6 @@ const Checkbox = /*#__PURE__*/React.forwardRef(function Checkbox({
     type: type,
     ref: ref,
     className: "form-check-input",
-    checked: checked,
     onChange: e => onChange(e.target.checked),
     id: id
   }, props)), /*#__PURE__*/React.createElement("label", {

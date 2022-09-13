@@ -14,7 +14,7 @@ function Item(menu) {
     }
     return (
         <li className="nav-item" key={route}>
-            <NavLink className="nav-link" to={route}>
+            <NavLink className="nav-link text-truncate" to={route}>
                 <i className={icon}></i>
                 <span className="ms-2">{label || name}</span>
             </NavLink>

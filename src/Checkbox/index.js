@@ -19,7 +19,6 @@ const Checkbox = React.forwardRef(function Checkbox({className, id, onChange, ch
                 type={type}
                 ref={ref}
                 className="form-check-input"
-                checked={checked}
                 onChange={(e) => onChange(e.target.checked)}
                 id={id}
                 {...props}

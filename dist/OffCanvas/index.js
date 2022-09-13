@@ -8,8 +8,7 @@ let pointer;
 const defaultProps = {};
 
 function OffCanvas({
-  children,
-  signOutClick
+  children
 }) {
   const ref = React.useRef();
   const {

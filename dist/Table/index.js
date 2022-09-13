@@ -5,7 +5,6 @@ import OutputFactory from "../OutputFactory";
 import Progress from "../Progress";
 import InfiniteScroll from "react-infinite-scroller";
 import Checkbox from "../Checkbox";
-import camelToTitleCase from "../camelToTitleCase";
 
 const noop = () => {};
 
@@ -19,7 +18,8 @@ const defaultProps = {
   onItemClick: noop,
   onSelect: noop,
   onSelectAll: noop,
-  readOnly: false
+  readOnly: false,
+  transformLabel: key => key
 };
 
 function Table({
@@ -34,7 +34,8 @@ function Table({
   onSelect,
   onSelectAll,
   excludeFields,
-  readOnly
+  readOnly,
+  transformLabel
 }) {
   return /*#__PURE__*/React.createElement(InfiniteScroll, {
     className: className,
@@ -59,7 +60,7 @@ function Table({
     } = fields[field];
     if (options.hasOwnProperty('read') && !options.read) return null;
     if (excludeFields.includes(field)) return null;
-    const label = options.label || camelToTitleCase(field);
+    const label = options.label || transformLabel(field);
     return /*#__PURE__*/React.createElement("th", {
       key: field,
       className: "fs-xs align-middle text-nowrap"

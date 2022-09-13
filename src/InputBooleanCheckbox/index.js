@@ -11,7 +11,7 @@ function InputBooleanCheckbox({className, field, object, id}) {
         <Checkbox
             className={className}
             onChange={onChange}
-            checked={value}
+            defaultChecked={value}
             label={field}
             id={id}
         />

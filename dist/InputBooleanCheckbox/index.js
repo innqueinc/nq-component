@@ -15,7 +15,7 @@ function InputBooleanCheckbox({
   return /*#__PURE__*/React.createElement(Checkbox, {
     className: className,
     onChange: onChange,
-    checked: value,
+    defaultChecked: value,
     label: field,
     id: id
   });

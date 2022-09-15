@@ -27,3 +27,4 @@ export { default as Layout } from "./Layout";
 export { default as Switch } from "./Switch";
 export { default as InputBooleanCheckbox } from "./InputBooleanCheckbox";
 export { default as OutputTable } from "./OutputTable";
+export { default as OutputFactory } from "./OutputFactory";

@@ -19,7 +19,8 @@ const defaultProps = {
   onSelect: noop,
   onSelectAll: noop,
   readOnly: false,
-  transformLabel: key => key
+  transformLabel: key => key,
+  actions: []
 };
 
 function Table({
@@ -35,7 +36,8 @@ function Table({
   onSelectAll,
   excludeFields,
   readOnly,
-  transformLabel
+  transformLabel,
+  actions
 }) {
   return /*#__PURE__*/React.createElement(InfiniteScroll, {
     className: className,
@@ -65,7 +67,10 @@ function Table({
       key: field,
       className: "fs-xs align-middle text-nowrap"
     }, label);
-  }))), /*#__PURE__*/React.createElement("tbody", {
+  }), actions.length > 0 && /*#__PURE__*/React.createElement("th", {
+    className: "fs-xs align-middle text-nowrap",
+    colSpan: actions.length
+  }, "Actions"))), /*#__PURE__*/React.createElement("tbody", {
     className: "bg-white"
   }, objects.length === 0 && !progress && /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
     className: "text-center fs-lg",
@@ -97,6 +102,15 @@ function Table({
         field: field,
         object: object
       }, options)));
+    }), actions.map(action => {
+      return /*#__PURE__*/React.createElement("td", {
+        className: "text-truncate"
+      }, /*#__PURE__*/React.createElement("button", {
+        onClick: action.onClick && action.onClick.bind(this, index),
+        className: "btn btn-primary btn-sm fs-xs shadow-none"
+      }, /*#__PURE__*/React.createElement("i", {
+        className: action.icon
+      }), " ", action.label));
     }));
   }), progress && /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
     colSpan: Object.keys(fields).length + 1

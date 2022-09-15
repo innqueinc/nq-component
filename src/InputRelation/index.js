@@ -9,7 +9,7 @@ const defaultProps = {
     where: {}
 }
 
-function InputRelation({className, field, object, target, isMulti, schemas, find, where}) {
+function InputRelation({className, field, object, target, isMulti, schemas, find, where, disabled, ...props}) {
     // get schema
     const schema = schemas.find(s => s.name === target);
     const indexes = React.useMemo(() => {
@@ -60,6 +60,8 @@ function InputRelation({className, field, object, target, isMulti, schemas, find
             className={classNames(className)}
             isMulti={isMulti}
             cacheOptions
+            isDisabled={disabled}
+            {...props}
         />
     );
 }

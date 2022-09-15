@@ -1,3 +1,5 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 import React from 'react';
 import AsyncSelect from 'react-select/async';
 import classNames from "../classNames";
@@ -16,7 +18,9 @@ function InputRelation({
   isMulti,
   schemas,
   find,
-  where
+  where,
+  disabled,
+  ...props
 }) {
   // get schema
   const schema = schemas.find(s => s.name === target);
@@ -62,7 +66,7 @@ function InputRelation({
     }
   }
 
-  return /*#__PURE__*/React.createElement(AsyncSelect, {
+  return /*#__PURE__*/React.createElement(AsyncSelect, _extends({
     placeholder: `select ${name}`,
     classNamePrefix: "custom-form-control",
     menuPortalTarget: document.body,
@@ -72,8 +76,9 @@ function InputRelation({
     onChange: onChange,
     className: classNames(className),
     isMulti: isMulti,
-    cacheOptions: true
-  });
+    cacheOptions: true,
+    isDisabled: disabled
+  }, props));
 }
 
 InputRelation.defaultProps = defaultProps;

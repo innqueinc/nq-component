@@ -11,7 +11,7 @@ const defaultProps = {
     type: 'checkbox'
 };
 
-const Checkbox = React.forwardRef(function Checkbox({className, id, onChange, checked, label, type, ...props}, ref) {
+const Checkbox = React.forwardRef(function Checkbox({className, id, onChange, label, type, ...props}, ref) {
     const classes = classNames('form-check', className);
     return (
         <div className={classes}>

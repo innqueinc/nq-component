@@ -17,7 +17,8 @@ const defaultProps = {
     onSelect: noop,
     onSelectAll: noop,
     readOnly: false,
-    transformLabel: key => key
+    transformLabel: key => key,
+    actions: []
 }
 
 function Table({
@@ -33,7 +34,8 @@ function Table({
                    onSelectAll,
                    excludeFields,
                    readOnly,
-                   transformLabel
+                   transformLabel,
+                   actions
                }) {
     return (
         <InfiniteScroll
@@ -64,6 +66,11 @@ function Table({
                                 <th key={field} className="fs-xs align-middle text-nowrap">{label}</th>
                             );
                         })}
+                        {actions.length > 0 && (
+                            <th
+                                className="fs-xs align-middle text-nowrap"
+                                colSpan={actions.length}>Actions</th>
+                        )}
                     </tr>
                     </thead>
                     <tbody className="bg-white">
@@ -111,6 +118,20 @@ function Table({
                                             </td>
                                         );
                                     })}
+                                    {
+                                        actions.map((action) => {
+                                            return (
+                                                <td
+                                                    className="text-truncate">
+                                                    <button
+                                                        onClick={action.onClick && action.onClick.bind(this, index)}
+                                                        className="btn btn-primary btn-sm fs-xs shadow-none">
+                                                        <i className={action.icon}/> {action.label}
+                                                    </button>
+                                                </td>
+                                            )
+                                        })
+                                    }
                                 </tr>
                             );
                         })

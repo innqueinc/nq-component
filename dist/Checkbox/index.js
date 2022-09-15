@@ -14,7 +14,6 @@ const Checkbox = /*#__PURE__*/React.forwardRef(function Checkbox({
   className,
   id,
   onChange,
-  checked,
   label,
   type,
   ...props

@@ -6,10 +6,24 @@ import GetOption from './GetOption';
 import getIndexes from '../getIndexes';
 
 const defaultProps = {
-    where: {}
+    where: {},
+    onChange: () => {
+    }
 }
 
-function InputRelation({className, field, object, target, isMulti, schemas, find, where, disabled, ...props}) {
+function InputRelation({
+                           className,
+                           field,
+                           object,
+                           target,
+                           isMulti,
+                           schemas,
+                           find,
+                           where,
+                           disabled,
+                           onChange,
+                           ...props
+                       }) {
     // get schema
     const schema = schemas.find(s => s.name === target);
     const indexes = React.useMemo(() => {
@@ -32,7 +46,7 @@ function InputRelation({className, field, object, target, isMulti, schemas, find
         new GetOption(target, indexes, word, callback, find, where);
     }
 
-    function onChange(_value) {
+    function _onChange(_value) {
         if (isMulti) {
             const added = _value
                 .filter(i => !value.includes(i))
@@ -46,6 +60,7 @@ function InputRelation({className, field, object, target, isMulti, schemas, find
             setValue(_value);
             object[field] = {id: _value.id};
         }
+        onChange(object[field]);
     }
 
     return (
@@ -56,7 +71,7 @@ function InputRelation({className, field, object, target, isMulti, schemas, find
             loadOptions={loadOptions}
             value={value}
             defaultOptions={true}
-            onChange={onChange}
+            onChange={_onChange}
             className={classNames(className)}
             isMulti={isMulti}
             cacheOptions

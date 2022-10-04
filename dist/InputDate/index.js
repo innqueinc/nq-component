@@ -19,7 +19,7 @@ function InputDate({
   }
 
   return /*#__PURE__*/React.createElement("input", _extends({
-    value: object[field] && object[field].slice(0, 10),
+    defaultValue: object[field] && object[field].slice(0, 10),
     className: classNames('form-control', className),
     name: field,
     onInput: onInput

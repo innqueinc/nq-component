@@ -25,15 +25,15 @@ function Item(menu) {
 
 Item.defaultProps = defaultProps;
 
-function ItemChild({name, label, icon, route}) {
-    let key = name;
+function ItemChild({name, label, icon, route, id}) {
+    let key = id || name.replaceAll(' ', '');
     return (
         <React.Fragment key={key}>
             <li className="nav-item">
                 <Accordion
                     eventKey={key}
-                    className="nav-link font-size-sm">
-                    <div className="d-inline-block">
+                    className="nav-link font-size-sm text-truncate">
+                    <div className="d-inline">
                         <i className={icon}></i>
                         <span className="ms-2">{label || name}</span>
                     </div>

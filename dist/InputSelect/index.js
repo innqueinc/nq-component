@@ -13,6 +13,7 @@ function InputSelect({
   object,
   options = [],
   onChange,
+  label,
   ...props
 }) {
   function change(e) {
@@ -24,15 +25,15 @@ function InputSelect({
   const value = object[field];
   return /*#__PURE__*/React.createElement("select", _extends({
     className: classNames('form-select', className),
-    onChange: change
-  }, props, {
+    onChange: change,
     defaultValue: value || ""
-  }), /*#__PURE__*/React.createElement("option", {
+  }, props), /*#__PURE__*/React.createElement("option", {
     value: "",
     disabled: true
-  }, "Select ", camelToTitleCase(field)), options.map((o, i) => /*#__PURE__*/React.createElement("option", {
+  }, label || `Select ${camelToTitleCase(field)}`), options.map((o, i) => /*#__PURE__*/React.createElement("option", {
     key: i,
-    value: o
+    value: o,
+    selected: value === o
   }, o)));
 }
 

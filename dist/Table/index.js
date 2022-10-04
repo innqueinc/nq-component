@@ -60,17 +60,17 @@ function Table({
       type,
       ...options
     } = fields[field];
-    if (options.hasOwnProperty('read') && !options.read) return null;
+    if (options.hasOwnProperty('_read') && !options._read) return null;
     if (excludeFields.includes(field)) return null;
-    const label = options.label || transformLabel(field);
+    const label = options._label || field;
     return /*#__PURE__*/React.createElement("th", {
       key: field,
       className: "fs-xs align-middle text-nowrap"
-    }, label);
+    }, transformLabel(label));
   }), actions.length > 0 && /*#__PURE__*/React.createElement("th", {
     className: "fs-xs align-middle text-nowrap",
     colSpan: actions.length
-  }, "Actions"))), /*#__PURE__*/React.createElement("tbody", {
+  }, transformLabel('Operation')))), /*#__PURE__*/React.createElement("tbody", {
     className: "bg-white"
   }, objects.length === 0 && !progress && /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
     className: "text-center fs-lg",
@@ -88,7 +88,7 @@ function Table({
       onChange: () => onSelect(index)
     })), Object.keys(fields).map((field, i) => {
       const options = fields[field];
-      if (options.hasOwnProperty('read') && !options.read) return null;
+      if (options.hasOwnProperty('_read') && !options._read) return null;
       if (excludeFields.includes(field)) return null;
       return /*#__PURE__*/React.createElement("td", {
         key: field,

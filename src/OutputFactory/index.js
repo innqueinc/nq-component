@@ -1,7 +1,7 @@
 import React from 'react';
 import OutputString from "./type/OutputString";
 import OutputDate from "./type/OutputDate";
-// import OutputPointer from "./type/OutputPointer";
+import OutputBoolean from "./type/OutputBoolean";
 
 function OutputFactory({type, field, object, ...options}) {
     switch (type) {
@@ -11,6 +11,11 @@ function OutputFactory({type, field, object, ...options}) {
         case 'Number':
         case 'Tel':
             return <OutputString
+                field={field}
+                object={object}
+                {...options}/>;
+        case 'Boolean':
+            return <OutputBoolean
                 field={field}
                 object={object}
                 {...options}/>;

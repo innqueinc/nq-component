@@ -59,17 +59,17 @@ function Table({
                         )}
                         {Object.keys(fields).map((field) => {
                             const {type, ...options} = fields[field];
-                            if (options.hasOwnProperty('read') && !options.read) return null;
+                            if (options.hasOwnProperty('_read') && !options._read) return null;
                             if (excludeFields.includes(field)) return null;
-                            const label = options.label || transformLabel(field);
+                            const label = options._label || field;
                             return (
-                                <th key={field} className="fs-xs align-middle text-nowrap">{label}</th>
+                                <th key={field} className="fs-xs align-middle text-nowrap">{transformLabel(label)}</th>
                             );
                         })}
                         {actions.length > 0 && (
                             <th
                                 className="fs-xs align-middle text-nowrap"
-                                colSpan={actions.length}>Actions</th>
+                                colSpan={actions.length}>{transformLabel('Operation')}</th>
                         )}
                     </tr>
                     </thead>
@@ -100,7 +100,7 @@ function Table({
                                     )}
                                     {Object.keys(fields).map((field, i) => {
                                         const options = fields[field];
-                                        if (options.hasOwnProperty('read') && !options.read) return null;
+                                        if (options.hasOwnProperty('_read') && !options._read) return null;
                                         if (excludeFields.includes(field)) return null;
                                         return (
                                             <td key={field}

@@ -6,7 +6,7 @@ const defaultProps = {
     field: ''
 }
 
-function InputSelect({className, field, object, options = [], onChange, ...props}) {
+function InputSelect({className, field, object, options = [], onChange, label, ...props}) {
     function change(e) {
         const value = e.target.value;
         object[field] = value;
@@ -18,13 +18,13 @@ function InputSelect({className, field, object, options = [], onChange, ...props
         <select
             className={classNames('form-select', className)}
             onChange={change}
-            {...props}
-            defaultValue={value || ""}>
+            defaultValue={value || ""}
+            {...props}>
             <option value="" disabled>
-                Select {camelToTitleCase(field)}
+                {label || `Select ${camelToTitleCase(field)}`}
             </option>
             {
-                options.map((o, i) => <option key={i} value={o}>{o}</option>)
+                options.map((o, i) => <option key={i} value={o} selected={value === o}>{o}</option>)
             }
         </select>
     )

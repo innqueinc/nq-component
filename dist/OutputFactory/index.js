@@ -2,7 +2,8 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 import React from 'react';
 import OutputString from "./type/OutputString";
-import OutputDate from "./type/OutputDate"; // import OutputPointer from "./type/OutputPointer";
+import OutputDate from "./type/OutputDate";
+import OutputBoolean from "./type/OutputBoolean";
 
 function OutputFactory({
   type,
@@ -17,6 +18,12 @@ function OutputFactory({
     case 'Number':
     case 'Tel':
       return /*#__PURE__*/React.createElement(OutputString, _extends({
+        field: field,
+        object: object
+      }, options));
+
+    case 'Boolean':
+      return /*#__PURE__*/React.createElement(OutputBoolean, _extends({
         field: field,
         object: object
       }, options));

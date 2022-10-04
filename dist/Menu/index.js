@@ -36,18 +36,19 @@ function ItemChild({
   name,
   label,
   icon,
-  route
+  route,
+  id
 }) {
-  let key = name;
+  let key = id || name.replaceAll(' ', '');
   return /*#__PURE__*/React.createElement(React.Fragment, {
     key: key
   }, /*#__PURE__*/React.createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/React.createElement(Accordion, {
     eventKey: key,
-    className: "nav-link font-size-sm"
+    className: "nav-link font-size-sm text-truncate"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "d-inline-block"
+    className: "d-inline"
   }, /*#__PURE__*/React.createElement("i", {
     className: icon
   }), /*#__PURE__*/React.createElement("span", {

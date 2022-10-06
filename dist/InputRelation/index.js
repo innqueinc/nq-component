@@ -7,7 +7,8 @@ import objectToOption from './objectToOption';
 import GetOption from './GetOption';
 import getIndexes from '../getIndexes';
 const defaultProps = {
-  where: {}
+  where: {},
+  onChange: () => {}
 };
 
 function InputRelation({
@@ -20,6 +21,7 @@ function InputRelation({
   find,
   where,
   disabled,
+  onChange,
   ...props
 }) {
   // get schema
@@ -45,7 +47,7 @@ function InputRelation({
     new GetOption(target, indexes, word, callback, find, where);
   }
 
-  function onChange(_value) {
+  function _onChange(_value) {
     if (isMulti) {
       const added = _value.filter(i => !value.includes(i)).map(o => ({
         id: o.id
@@ -64,6 +66,8 @@ function InputRelation({
         id: _value.id
       };
     }
+
+    onChange(object[field]);
   }
 
   return /*#__PURE__*/React.createElement(AsyncSelect, _extends({
@@ -73,7 +77,7 @@ function InputRelation({
     loadOptions: loadOptions,
     value: value,
     defaultOptions: true,
-    onChange: onChange,
+    onChange: _onChange,
     className: classNames(className),
     isMulti: isMulti,
     cacheOptions: true,

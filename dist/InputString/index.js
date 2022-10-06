@@ -14,6 +14,8 @@ function InputString({
   object,
   ...props
 }) {
+  console.log(object);
+
   function onInput(e) {
     const value = e.target.value;
     object[field] = value;

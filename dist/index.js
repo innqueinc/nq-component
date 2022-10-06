@@ -28,3 +28,6 @@ export { default as Switch } from "./Switch";
 export { default as InputBooleanCheckbox } from "./InputBooleanCheckbox";
 export { default as OutputTable } from "./OutputTable";
 export { default as OutputFactory } from "./OutputFactory";
+export { default as Scroll } from "./Scroll";
+export { default as InputRadioGroup } from "./InputRadioGroup";
+export { default as InputFactory } from "./InputFactory";

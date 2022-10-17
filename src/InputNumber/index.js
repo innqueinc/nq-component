@@ -4,16 +4,24 @@ import classNames from "../classNames";
 const defaultProps = {
     object: {},
     type: 'tel',
+    parse: true
 };
 
-function InputNumber({className, field, options, object, ...props}) {
+function InputNumber({type, parse, className, maxLength, field, options, object, ...props}) {
     function onInput(e) {
-        e.target.value = e.target.value.replace(/[^\d]/gi, '');
-        if (e.target.value === '' || !e.target.validity.valid) {
+        const value = e.target.value;
+        e.target.setCustomValidity('');
+        e.target.value = value.replace(/[^\d]/gi, '');
+        if (value === '' || !e.target.validity.valid) {
             return;
         }
-        object[field] = parseInt(e.target.value);
+        if (maxLength && parseInt(maxLength) < value.length) {
+            e.target.value = value.slice(0, parseInt(maxLength));
+            return;
+        }
+        object[field] = parse ? parseInt(value) : value;
     }
+
     const value = object[field];
     return (
         <input

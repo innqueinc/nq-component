@@ -14,10 +14,9 @@ function InputString({
   object,
   ...props
 }) {
-  console.log(object);
-
   function onInput(e) {
     const value = e.target.value;
+    e.target.setCustomValidity('');
     object[field] = value;
   }
 

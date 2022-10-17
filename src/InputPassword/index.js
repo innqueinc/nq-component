@@ -9,6 +9,7 @@ const defaultProps = {
 function InputPassword({className, field, object, hidden, required, ...props}) {
     function onInput(e) {
         const value = e.target.value;
+        e.target.setCustomValidity('');
         object[field] = value;
     }
 

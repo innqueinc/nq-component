@@ -14,6 +14,7 @@ import InputBooleanCheckbox from '../InputBooleanCheckbox';
 function InputFactory({
   type,
   _type,
+  __type,
   field,
   object,
   ...options
@@ -23,7 +24,7 @@ function InputFactory({
     case 'String':
       return /*#__PURE__*/React.createElement(InputString, _extends({
         field: field,
-        type: type.toLowerCase(),
+        type: __type || _type || type.toLowerCase(),
         object: object
       }, options));
 
@@ -36,7 +37,7 @@ function InputFactory({
     case 'Enum':
       return /*#__PURE__*/React.createElement(InputSelect, _extends({
         field: field,
-        type: type.toLowerCase(),
+        type: __type || _type || type.toLowerCase(),
         object: object,
         options: options.values
       }, options));
@@ -51,14 +52,14 @@ function InputFactory({
     case 'Date':
       return /*#__PURE__*/React.createElement(InputDate, _extends({
         field: field,
-        type: type.toLowerCase(),
+        type: __type || _type || type.toLowerCase(),
         object: object
       }, options));
 
     case 'Text':
       return /*#__PURE__*/React.createElement(InputText, _extends({
         field: field,
-        type: type.toLowerCase(),
+        type: __type || _type || type.toLowerCase(),
         object: object
       }, options));
 
@@ -67,14 +68,14 @@ function InputFactory({
       return /*#__PURE__*/React.createElement(InputRelation, _extends({
         isMulti: type === 'Relation',
         field: field,
-        type: type.toLowerCase(),
+        type: __type || _type || type.toLowerCase(),
         object: object
       }, options));
 
     case 'Image':
       return /*#__PURE__*/React.createElement(InputImage, _extends({
         field: field,
-        type: type.toLowerCase(),
+        type: __type || _type || type.toLowerCase(),
         object: object
       }, options));
 
@@ -82,7 +83,7 @@ function InputFactory({
       return /*#__PURE__*/React.createElement(InputBooleanCheckbox, _extends({
         id: object.id,
         field: field,
-        type: type.toLowerCase(),
+        type: __type || _type || type.toLowerCase(),
         object: object
       }, options));
 

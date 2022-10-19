@@ -10,13 +10,13 @@ import InputImage from '../InputImage';
 import InputBooleanCheckbox from '../InputBooleanCheckbox';
 
 
-function InputFactory({type, _type, field, object, ...options}) {
+function InputFactory({type, _type,__type, field, object, ...options}) {
     switch (_type || type) {
         case 'Email':
         case 'String':
             return <InputString
                 field={field}
-                type={type.toLowerCase()}
+                type={__type || _type || type.toLowerCase()}
                 object={object}
                 {...options}/>;
         case 'Password':
@@ -27,7 +27,7 @@ function InputFactory({type, _type, field, object, ...options}) {
         case 'Enum':
             return <InputSelect
                 field={field}
-                type={type.toLowerCase()}
+                type={__type || _type || type.toLowerCase()}
                 object={object}
                 options={options.values}
                 {...options}/>;
@@ -40,13 +40,13 @@ function InputFactory({type, _type, field, object, ...options}) {
         case 'Date':
             return <InputDate
                 field={field}
-                type={type.toLowerCase()}
+                type={__type || _type || type.toLowerCase()}
                 object={object}
                 {...options}/>;
         case 'Text':
             return <InputText
                 field={field}
-                type={type.toLowerCase()}
+                type={__type || _type || type.toLowerCase()}
                 object={object}
                 {...options}/>;
         case 'Relation':
@@ -54,20 +54,20 @@ function InputFactory({type, _type, field, object, ...options}) {
             return <InputRelation
                 isMulti={type === 'Relation'}
                 field={field}
-                type={type.toLowerCase()}
+                type={__type || _type || type.toLowerCase()}
                 object={object}
                 {...options}/>;
         case 'Image':
             return <InputImage
                 field={field}
-                type={type.toLowerCase()}
+                type={__type || _type || type.toLowerCase()}
                 object={object}
                 {...options}/>;
         case 'Boolean':
             return <InputBooleanCheckbox
                 id={object.id}
                 field={field}
-                type={type.toLowerCase()}
+                type={__type || _type || type.toLowerCase()}
                 object={object}
                 {...options}/>;
         default:

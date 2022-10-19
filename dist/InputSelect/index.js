@@ -4,7 +4,8 @@ import React from "react";
 import classNames from "../classNames";
 import camelToTitleCase from "../camelToTitleCase";
 const defaultProps = {
-  field: ''
+  field: '',
+  selected: -1
 };
 
 function InputSelect({
@@ -14,6 +15,7 @@ function InputSelect({
   options = [],
   onChange,
   label,
+  selected,
   ...props
 }) {
   function change(e) {
@@ -33,7 +35,7 @@ function InputSelect({
   }, label || `Select ${camelToTitleCase(field)}`), options.map((o, i) => /*#__PURE__*/React.createElement("option", {
     key: i,
     value: o,
-    selected: value === o
+    selected: value === o || selected === i
   }, o)));
 }
 

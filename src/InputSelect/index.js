@@ -1,12 +1,12 @@
 import React from "react";
 import classNames from "../classNames";
 import camelToTitleCase from "../camelToTitleCase";
-
 const defaultProps = {
-    field: ''
+    field: '',
+    selected:-1
 }
 
-function InputSelect({className, field, object, options = [], onChange, label, ...props}) {
+function InputSelect({className, field, object, options = [], onChange, label, selected, ...props}) {
     function change(e) {
         const value = e.target.value;
         object[field] = value;
@@ -14,6 +14,7 @@ function InputSelect({className, field, object, options = [], onChange, label, .
     }
 
     const value = object[field];
+
     return (
         <select
             className={classNames('form-select', className)}
@@ -24,7 +25,7 @@ function InputSelect({className, field, object, options = [], onChange, label, .
                 {label || `Select ${camelToTitleCase(field)}`}
             </option>
             {
-                options.map((o, i) => <option key={i} value={o} selected={value === o}>{o}</option>)
+                options.map((o, i) => <option key={i} value={o} selected={value === o || selected === i}>{o}</option>)
             }
         </select>
     )

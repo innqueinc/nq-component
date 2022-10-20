@@ -34,9 +34,9 @@ function InputSelect({
     disabled: true
   }, label || `Select ${camelToTitleCase(field)}`), options.map((o, i) => /*#__PURE__*/React.createElement("option", {
     key: i,
-    value: o,
-    selected: value === o || selected === i
-  }, o)));
+    value: o.value || o,
+    selected: value === (o.value || o) || selected === i
+  }, o.label || o)));
 }
 
 InputSelect.defaultProps = defaultProps;

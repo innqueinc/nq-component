@@ -6,5 +6,4 @@ function ScrollView({
     className: className
   }, children);
 }
-
 export default ScrollView;

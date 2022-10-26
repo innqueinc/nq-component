@@ -7,5 +7,4 @@ function access(documents) {
     return acc;
   }, {});
 }
-
 export default access;

@@ -4,7 +4,6 @@ import Nav from '../Nav';
 import NavItem from '../Nav/NavItem';
 import Accordion from '../Accordion';
 import Anchor from '../Anchor';
-
 function Sidebar({
   menus,
   anchor
@@ -16,7 +15,6 @@ function Sidebar({
       icon,
       route
     } = menu;
-
     if (Array.isArray(route)) {
       return /*#__PURE__*/React.createElement(Fragment, {
         key: key
@@ -40,7 +38,6 @@ function Sidebar({
         menus: route
       })));
     }
-
     return /*#__PURE__*/React.createElement(Item, {
       anchor: anchor,
       key: key,
@@ -48,7 +45,6 @@ function Sidebar({
     });
   }));
 }
-
 function Item({
   menu,
   anchor
@@ -68,6 +64,5 @@ function Item({
     icon: icon
   })));
 }
-
 Sidebar.Item = Item;
 export default Sidebar;

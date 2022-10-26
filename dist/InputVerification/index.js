@@ -1,8 +1,6 @@
 import React from 'react';
 import classNames from "../classNames";
-
 function noop() {}
-
 const defaultProps = {
   length: 6,
   value: '',
@@ -16,7 +14,6 @@ const KEY_CODE = {
   right: 39,
   down: 40
 };
-
 function InputVerification({
   className,
   length,
@@ -29,36 +26,27 @@ function InputVerification({
   };
   const refs = React.useMemo(() => {
     const refs = [];
-
     for (let i = 0; i < length; i++) {
       refs.push( /*#__PURE__*/React.createRef());
     }
-
     return refs;
   }, []);
-
   function onChange(index, e) {
     e.target.value = e.target.value.replace(/[^\d]/gi, '');
-
     if (e.target.value === '' || !e.target.validity.valid) {
       return;
     }
-
     const value = e.target.value;
     let next;
-
     if (value.length > 1) {
       let nextIndex = value.length + index - 1;
-
       if (nextIndex >= length) {
         nextIndex = length - 1;
       }
-
       next = refs[nextIndex];
       const split = value.split('');
       split.forEach((item, i) => {
         const cursor = index + i;
-
         if (cursor < length) {
           values[cursor] = item;
         }
@@ -69,25 +57,20 @@ function InputVerification({
       values[index] = value;
       setValues([...values]);
     }
-
     if (next) {
       next.current.focus();
       next.current.select();
     }
-
     triggerChange(values);
   }
-
   function onKeyDown(index, e) {
     const prevIndex = index - 1;
     const nextIndex = index + 1;
     const prev = refs[prevIndex];
     const next = refs[nextIndex];
-
     switch (e.keyCode) {
       case KEY_CODE.backspace:
         e.preventDefault();
-
         if (values[index]) {
           values[index] = '';
           setValues([...values]);
@@ -98,49 +81,36 @@ function InputVerification({
           setValues([...values]);
           triggerChange(values);
         }
-
         break;
-
       case KEY_CODE.left:
         e.preventDefault();
-
         if (prev) {
           prev.current.focus();
         }
-
         break;
-
       case KEY_CODE.right:
         e.preventDefault();
-
         if (next) {
           next.current.focus();
         }
-
         break;
-
       case KEY_CODE.up:
       case KEY_CODE.down:
         e.preventDefault();
         break;
-
       default:
     }
   }
-
   function onFocus(e) {
     e.target.select(e);
   }
-
   function triggerChange(values) {
     const value = values.join('');
     props.onChange(value);
-
     if (value.length >= length) {
       props.onComplete(value);
     }
   }
-
   return /*#__PURE__*/React.createElement("div", {
     className: classNames(className, "d-flex justify-content-center")
   }, values.map((value, index) => {
@@ -158,6 +128,5 @@ function InputVerification({
     });
   }));
 }
-
 InputVerification.defaultProps = defaultProps;
 export default InputVerification;

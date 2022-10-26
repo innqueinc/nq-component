@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NavItem from './NavItem';
 import IconText from './IconText';
-
 function NavItemCollapse({
   children,
   id,
@@ -26,5 +25,4 @@ function NavItemCollapse({
     id: id
   }, children));
 }
-
 export default NavItemCollapse;

@@ -6,7 +6,6 @@ import ImageCropper from "../ImageCropper";
 const defaultProps = {
   object: {}
 };
-
 function InputImage({
   className,
   field,
@@ -19,7 +18,6 @@ function InputImage({
   const classes = classNames('form-control', className);
   const imageCropper = React.useRef();
   const value = object[field];
-
   function showImageCropper(file) {
     dialog.fire({
       html: /*#__PURE__*/React.createElement(ImageCropper, {
@@ -43,16 +41,13 @@ function InputImage({
       }
     });
   }
-
   function onChange(e) {
     const files = e.target.files;
-
     if (files.length > 0) {
       const file = files[0];
       showImageCropper(file);
     }
   }
-
   return /*#__PURE__*/React.createElement("input", {
     type: "file",
     accept: "image/*",
@@ -62,6 +57,5 @@ function InputImage({
     onChange: onChange
   });
 }
-
 InputImage.defaultProps = defaultProps;
 export default InputImage;

@@ -1,6 +1,5 @@
 import React from "react";
 import Checkbox from "../Checkbox";
-
 function InputBooleanCheckbox({
   className,
   field,
@@ -10,7 +9,6 @@ function InputBooleanCheckbox({
   function onChange(checked) {
     object[field] = checked;
   }
-
   const value = object[field];
   return /*#__PURE__*/React.createElement(Checkbox, {
     className: className,
@@ -20,5 +18,4 @@ function InputBooleanCheckbox({
     id: id
   });
 }
-
 export default InputBooleanCheckbox;

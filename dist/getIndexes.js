@@ -4,5 +4,4 @@ function getIndexes(fields) {
     return acc;
   }, []);
 }
-
 export default getIndexes;

@@ -1,5 +1,4 @@
 import React from "react";
-
 function TypeString({
   onChange,
   field
@@ -12,7 +11,6 @@ function TypeString({
     };
     onChange(where);
   }
-
   return /*#__PURE__*/React.createElement("input", {
     type: "text",
     onChange: e => _onChange(e.target.value),
@@ -20,5 +18,4 @@ function TypeString({
     placeholder: "Search"
   });
 }
-
 export default TypeString;

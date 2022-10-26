@@ -4,7 +4,6 @@ const defaultProps = {
   transition: 'fade',
   duration: 600
 };
-
 function Transition({
   id,
   transition,
@@ -22,6 +21,5 @@ function Transition({
     key: id
   }, children));
 }
-
 Transition.defaultProps = defaultProps;
 export default Transition;

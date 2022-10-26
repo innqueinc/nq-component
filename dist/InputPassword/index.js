@@ -1,12 +1,10 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 import React from "react";
 import classNames from "../classNames";
 const defaultProps = {
   object: {},
   type: 'password'
 };
-
 function InputPassword({
   className,
   field,
@@ -20,12 +18,10 @@ function InputPassword({
     e.target.setCustomValidity('');
     object[field] = value;
   }
-
   function showPasswordClick(e) {
     const input = e.target.previousElementSibling;
     const isText = input.type === 'text';
     input.type = isText ? 'password' : 'text';
-
     if (isText) {
       e.target.classList.add("bi-eye-slash");
       e.target.classList.remove("bi-eye");
@@ -34,7 +30,6 @@ function InputPassword({
       e.target.classList.add("bi-eye");
     }
   }
-
   const value = object[field];
   return /*#__PURE__*/React.createElement("div", {
     className: "input-group"
@@ -51,6 +46,5 @@ function InputPassword({
     onClick: showPasswordClick
   }));
 }
-
 InputPassword.defaultProps = defaultProps;
 export default InputPassword;

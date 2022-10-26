@@ -3,7 +3,6 @@ const defaultProps = {
   background: 'white',
   padding: '2'
 };
-
 function Card({
   className,
   background,
@@ -16,6 +15,5 @@ function Card({
     className: "p-3 px-lg-5 py-lg-4"
   }, children));
 }
-
 Card.defaultProps = defaultProps;
 export default Card;

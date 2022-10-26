@@ -1,7 +1,6 @@
 import React from "react";
 import DateType from "./DateType";
 const keys = ['Daily', 'Weekly', 'Monthly', 'Custom'];
-
 function TypeDate({
   field,
   onChange
@@ -21,5 +20,4 @@ function TypeDate({
     onChange: onChange
   }));
 }
-
 export default TypeDate;

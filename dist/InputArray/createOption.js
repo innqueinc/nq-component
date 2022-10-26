@@ -4,5 +4,4 @@ function createOption(label) {
     value: label
   };
 }
-
 export default createOption;

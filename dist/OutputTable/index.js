@@ -1,5 +1,4 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 import React from "react";
 import camelToTitleCase from "../camelToTitleCase";
 import OutputFactory from "../OutputFactory";
@@ -12,7 +11,6 @@ const defaultProps = {
   fields: fields,
   limit: 10
 };
-
 function OutputTable({
   collection,
   fields,
@@ -25,7 +23,6 @@ function OutputTable({
   const [progress, setProgress] = React.useState(true);
   const [current, setCurrent] = React.useState(1);
   const [hasMore, setMore] = React.useState(false);
-
   function getData(where = {}) {
     const skip = (current - 1) * limit;
     const query = {
@@ -50,11 +47,9 @@ function OutputTable({
       setProgress(false);
     });
   }
-
   React.useEffect(() => {
     getData();
   }, []);
-
   function onSelectAll(checked) {
     if (checked) {
       setSelectedObjects([...objects]);
@@ -62,20 +57,16 @@ function OutputTable({
       setSelectedObjects([]);
     }
   }
-
   function onSelect(index) {
     const selected = objects[index];
     const i = selectedObjects.indexOf(selected);
-
     if (i > -1) {
       selectedObjects.splice(i, 1);
     } else {
       selectedObjects.push(selected);
     }
-
     setSelectedObjects([...selectedObjects]);
   }
-
   function searchSubmit(where) {
     setObjects([]);
     setCurrent(1);
@@ -83,7 +74,6 @@ function OutputTable({
     setProgress(true);
     getData(where);
   }
-
   function next() {
     if (!progress) {
       console.log('next');
@@ -93,7 +83,6 @@ function OutputTable({
       getData();
     }
   }
-
   return /*#__PURE__*/React.createElement(InfiniteScroll, {
     className: "custom-class",
     loadMore: next,
@@ -162,6 +151,5 @@ function OutputTable({
     className: "fs-sm"
   }, "Loading ...")))))));
 }
-
 OutputTable.defaultProps = defaultProps;
 export default OutputTable;

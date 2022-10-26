@@ -3,7 +3,6 @@ import { cx } from '../../utils/DomUtil';
 const defaultProps = {
   className: 'row p-1'
 };
-
 function IconText({
   className,
   children,
@@ -22,6 +21,5 @@ function IconText({
     className: "pl-2 col"
   }, text));
 }
-
 IconText.defaultProps = defaultProps;
 export default IconText;

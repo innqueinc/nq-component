@@ -1,13 +1,10 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 import React from "react";
 import OutputFactory from "../OutputFactory";
 import Progress from "../Progress";
 import InfiniteScroll from "react-infinite-scroller";
 import Checkbox from "../Checkbox";
-
 const noop = () => {};
-
 const defaultProps = {
   fields: {},
   objects: [],
@@ -22,7 +19,6 @@ const defaultProps = {
   transformLabel: key => key,
   actions: []
 };
-
 function Table({
   className,
   fields,
@@ -118,6 +114,5 @@ function Table({
     className: "fs-sm"
   }, "Loading ...")))))));
 }
-
 Table.defaultProps = defaultProps;
 export default Table;

@@ -1,5 +1,4 @@
 import React from "react";
-
 function Placeholder() {
   return /*#__PURE__*/React.createElement("div", {
     className: "h-100 d-flex align-items-center"
@@ -9,5 +8,4 @@ function Placeholder() {
     className: "fw-bold"
   }, "No Data Found !"), /*#__PURE__*/React.createElement("p", null, "What you searched was unfortunate not found or doesn't exist.")));
 }
-
 export default Placeholder;

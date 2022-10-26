@@ -2,7 +2,6 @@ import React from 'react';
 import InputType from "./InputType";
 let timeout;
 const types = ['String', 'Date'];
-
 function Search({
   className,
   fields,
@@ -10,17 +9,14 @@ function Search({
 }) {
   const [key, setKey] = React.useState();
   const [where, setWhere] = React.useState({});
-
   function submit(e) {
     e.preventDefault();
     onSubmit(where);
   }
-
   React.useEffect(() => {
     const keys = Object.keys(fields);
     setKey(keys[0]);
   }, [fields]);
-
   function onChange(where) {
     setWhere(where);
     clearTimeout(timeout);
@@ -28,7 +24,6 @@ function Search({
       onSubmit(where);
     }, 300);
   }
-
   return /*#__PURE__*/React.createElement("form", {
     className: className,
     onSubmit: submit
@@ -56,5 +51,4 @@ function Search({
     onChange: onChange
   })));
 }
-
 export default Search;

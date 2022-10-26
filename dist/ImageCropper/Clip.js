@@ -5,7 +5,5 @@ class Clip {
     this.width = width;
     this.height = height;
   }
-
 }
-
 export default Clip;

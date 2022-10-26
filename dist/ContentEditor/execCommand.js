@@ -4,5 +4,4 @@ function execCommand(command, value) {
       break;
   }
 }
-
 export default execCommand;

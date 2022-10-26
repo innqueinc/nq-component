@@ -5,5 +5,4 @@ function objectToOption(object, indexes) {
     id: object.id
   };
 }
-
 export default objectToOption;

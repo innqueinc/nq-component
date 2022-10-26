@@ -1,5 +1,4 @@
 import React from 'react';
-
 function Nav({
   children,
   ...props
@@ -8,5 +7,4 @@ function Nav({
     className: "nav flex-column"
   }, children);
 }
-
 export default Nav;

@@ -4,7 +4,6 @@ const defaultProps = {
   loop: true,
   autoplay: true
 };
-
 function Animate({
   animationData,
   width,
@@ -26,6 +25,5 @@ function Animate({
     height: height || "100%"
   });
 }
-
 Animate.defaultProps = defaultProps;
 export default Animate;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { cx } from '../../utils/DomUtil';
 const defaultProps = {};
-
 function NavItem({
   className,
   children,
@@ -12,6 +11,5 @@ function NavItem({
     className: classes
   }, children);
 }
-
 NavItem.defaultProps = defaultProps;
 export default NavItem;

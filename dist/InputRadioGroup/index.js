@@ -1,6 +1,5 @@
 import classNames from "../classNames";
 import React from "react";
-
 function InputRadioGroup({
   className,
   name,
@@ -9,23 +8,18 @@ function InputRadioGroup({
   ...props
 }) {
   const classes = classNames('form-select fs-sm', className);
-
   function onChangeMale(e) {
     const value = e.target.checked;
-
     if (value) {
       document[name] = 'Male';
     }
   }
-
   function onChangeFemale(e) {
     const value = e.target.checked;
-
     if (value) {
       document[name] = 'Female';
     }
   }
-
   return /*#__PURE__*/React.createElement("div", {
     className: "d-flex flex-column text-wrap lh-1 w-100"
   }, /*#__PURE__*/React.createElement("label", {
@@ -61,5 +55,4 @@ function InputRadioGroup({
     htmlFor: "inlineRadio2"
   }, /*#__PURE__*/React.createElement("small", null, "Female")))));
 }
-
 export default InputRadioGroup;

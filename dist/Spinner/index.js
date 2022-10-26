@@ -1,6 +1,5 @@
 import React from "react";
 import classNames from "../classNames";
-
 function Spinner({
   className,
   ...props
@@ -12,5 +11,4 @@ function Spinner({
     role: "status"
   });
 }
-
 export default Spinner;

@@ -4,7 +4,6 @@ import Accordion from "../Accordion";
 const defaultProps = {
   icon: 'bi bi-journal-text'
 };
-
 function Item(menu) {
   const {
     name,
@@ -12,11 +11,9 @@ function Item(menu) {
     label
   } = menu;
   const route = menu.route || '/class/' + name;
-
   if (Array.isArray(route)) {
     return /*#__PURE__*/React.createElement(ItemChild, menu);
   }
-
   return /*#__PURE__*/React.createElement("li", {
     className: "nav-item",
     key: route
@@ -29,9 +26,7 @@ function Item(menu) {
     className: "ms-2"
   }, label || name)));
 }
-
 Item.defaultProps = defaultProps;
-
 function ItemChild({
   name,
   label,
@@ -65,7 +60,6 @@ function ItemChild({
     return /*#__PURE__*/React.createElement(Item, m);
   }))));
 }
-
 function Menu({
   menus
 }) {
@@ -75,14 +69,12 @@ function Menu({
       className: "dropdown-divider bg-light"
     });
   }
-
   return /*#__PURE__*/React.createElement("ul", {
     className: "navbar-nav"
   }, menus.map((menu, i) => {
-    if (!Object.keys(menu).length) return renderDivider(i); // return renderItem(menu);
-
+    if (!Object.keys(menu).length) return renderDivider(i);
+    // return renderItem(menu);
     return /*#__PURE__*/React.createElement(Item, menu);
   }));
 }
-
 export default Menu;

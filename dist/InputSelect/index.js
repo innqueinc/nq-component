@@ -1,5 +1,4 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 import React from "react";
 import classNames from "../classNames";
 import camelToTitleCase from "../camelToTitleCase";
@@ -7,7 +6,6 @@ const defaultProps = {
   field: '',
   selected: -1
 };
-
 function InputSelect({
   className,
   field,
@@ -23,7 +21,6 @@ function InputSelect({
     object[field] = value;
     onChange && onChange(value);
   }
-
   const value = object[field];
   return /*#__PURE__*/React.createElement("select", _extends({
     className: classNames('form-select', className),
@@ -38,6 +35,5 @@ function InputSelect({
     selected: value === (o.value || o) || selected === i
   }, o.label || o)));
 }
-
 InputSelect.defaultProps = defaultProps;
 export default InputSelect;

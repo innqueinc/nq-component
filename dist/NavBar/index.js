@@ -5,7 +5,6 @@ const defaultProps = {
   icon: 'bi bi-list',
   logo: '/assets/images/logo.svg'
 };
-
 function NavBar({
   className,
   onToggle,
@@ -20,7 +19,6 @@ function NavBar({
     collapsed,
     setCollapse
   } = React.useContext(Layout.Context);
-
   function click() {
     if (onToggle) {
       onToggle();
@@ -28,7 +26,6 @@ function NavBar({
       setCollapse(!collapsed);
     }
   }
-
   return /*#__PURE__*/React.createElement("nav", {
     className: classes
   }, /*#__PURE__*/React.createElement("div", {
@@ -50,6 +47,5 @@ function NavBar({
     alt: "logo"
   }), title && title), children));
 }
-
 NavBar.defaultProps = defaultProps;
 export default NavBar;

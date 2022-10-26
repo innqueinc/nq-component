@@ -6,7 +6,6 @@ function canvasToBlob(canvas, fileName, fileType = 'image/jpeg', quality = 1, fi
         quality
       });
     }
-
     return new Promise(resolve => canvas.toBlob(resolve, fileType, quality));
   }).then(file => {
     file.name = fileName;
@@ -14,5 +13,4 @@ function canvasToBlob(canvas, fileName, fileType = 'image/jpeg', quality = 1, fi
     return file;
   });
 }
-
 export default canvasToBlob;

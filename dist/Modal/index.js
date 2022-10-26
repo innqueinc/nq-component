@@ -7,14 +7,11 @@ import createWithBSPrefix from "../createWithBSPrefix";
 const propTypes = {
   size: PropTypes.oneOf(["sm", "lg", "xl"])
 };
-
 function noop() {}
-
 const defaultProps = {
   isOpen: false,
   onClosed: noop
 };
-
 function Modal({
   children,
   isOpen,
@@ -28,7 +25,6 @@ function Modal({
     setFade(isOpen);
     isOpen && document.body.classList.add('modal-open');
   }, [isOpen]);
-
   function renderModal() {
     const dialogBaseClass = "modal-dialog modal-dialog-centered";
     const size = "modal-" + props.size;
@@ -39,13 +35,11 @@ function Modal({
       className: "modal-content"
     }, children));
   }
-
   function onClosed(node) {
     props.onClosed(node);
     setOpen(isOpen);
     document.body.classList.remove('modal-open');
   }
-
   if (!open) return null;
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Fade, {
     in: isFade,
@@ -56,7 +50,6 @@ function Modal({
     className: "modal-backdrop"
   }));
 }
-
 Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 Modal.Header = ModalHeader;

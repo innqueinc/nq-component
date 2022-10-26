@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from "../classNames";
 const defaultProps = {};
-
 function Accordion({
   className,
   children,
@@ -16,7 +15,6 @@ function Accordion({
     "aria-expanded": "true"
   }, children);
 }
-
 function Collapse({
   children,
   eventKey,
@@ -27,7 +25,6 @@ function Collapse({
     id: eventKey
   }, children);
 }
-
 Accordion.Collapse = Collapse;
 Accordion.defaultProps = defaultProps;
 export default Accordion;

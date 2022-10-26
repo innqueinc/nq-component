@@ -1,6 +1,5 @@
 import React from "react";
 import Switch from "../Switch";
-
 function InputBooleanSwitch({
   className,
   field,
@@ -10,7 +9,6 @@ function InputBooleanSwitch({
   function onChange(checked) {
     object[field] = checked;
   }
-
   const value = object[field];
   return /*#__PURE__*/React.createElement(Switch, {
     className: className,
@@ -20,5 +18,4 @@ function InputBooleanSwitch({
     id: id
   });
 }
-
 export default InputBooleanSwitch;

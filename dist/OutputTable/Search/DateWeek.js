@@ -12,7 +12,6 @@ const options = [{
   label: 'Last Three Week',
   value: 28
 }];
-
 function DateWeek({
   field,
   onChange
@@ -31,7 +30,6 @@ function DateWeek({
     };
     onChange(where);
   }
-
   React.useEffect(() => {
     _onChange(options[0].value);
   }, []);
@@ -45,5 +43,4 @@ function DateWeek({
     }, o.label);
   }));
 }
-
 export default DateWeek;

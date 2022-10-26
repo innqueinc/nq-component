@@ -1,8 +1,6 @@
 import React from 'react';
 import Modal from './';
-
 function noop() {}
-
 const defaultProps = {
   positiveButton: 'YES',
   negativeButton: 'CANCEL',
@@ -10,7 +8,6 @@ const defaultProps = {
   onNegativeClick: noop,
   footer: true
 };
-
 function ModalContent({
   children,
   isOpen,
@@ -55,6 +52,5 @@ function ModalContent({
     className: "btn btn-light fs-sm ms-2"
   }, negativeButton)));
 }
-
 ModalContent.defaultProps = defaultProps;
 export default ModalContent;

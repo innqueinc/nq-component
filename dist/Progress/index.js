@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from "../classNames";
 import getValue from "../getValue";
-
 function Progress({
   className,
   children,
@@ -16,5 +15,4 @@ function Progress({
     className: classLoader
   }), children ? children : null);
 }
-
 export default Progress;

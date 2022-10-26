@@ -1,12 +1,10 @@
 import objectToOption from "./objectToOption";
-
 function GetOption(targetClass, indexes, word, callback, find, where) {
   this.query = {
     count: true,
     limit: 20,
     where: where
   };
-
   if (word && indexes.length > 0) {
     this.query.where['$or'] = indexes.map(index => {
       const or = {};
@@ -17,7 +15,6 @@ function GetOption(targetClass, indexes, word, callback, find, where) {
       return or;
     });
   }
-
   clearTimeout(this.timeout);
   this.timeout = setTimeout(() => {
     find.execute(targetClass, this.query).then(({
@@ -27,5 +24,4 @@ function GetOption(targetClass, indexes, word, callback, find, where) {
     });
   }, 300);
 }
-
 export default GetOption;

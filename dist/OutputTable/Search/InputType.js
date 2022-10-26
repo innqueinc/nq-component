@@ -1,6 +1,5 @@
 import TypeString from "./TypeString";
 import TypeDate from "./TypeDate";
-
 function InputType({
   type,
   field,
@@ -12,16 +11,13 @@ function InputType({
         field: field,
         onChange: onChange
       });
-
     case 'Date':
       return /*#__PURE__*/React.createElement(TypeDate, {
         field: field,
         onChange: onChange
       });
-
     default:
       return null;
   }
 }
-
 export default InputType;

@@ -4,22 +4,18 @@ import createOption from "./createOption";
 const components = {
   DropdownIndicator: null
 };
-
 function InputArray({
   field,
   object
 }) {
   const [values, setValues] = React.useState((object[field] || []).map(createOption));
   const [value, setValue] = React.useState('');
-
   function onChange(_values) {
     setValues(_values);
   }
-
   function onInputChange(value) {
     setValue(value);
   }
-
   function onKeyDown(e) {
     switch (e.key) {
       case 'Enter':
@@ -30,7 +26,6 @@ function InputArray({
         object[field] = values.map(v => v.value);
     }
   }
-
   return /*#__PURE__*/React.createElement(CreatableSelect, {
     components: components,
     inputValue: value,
@@ -44,5 +39,4 @@ function InputArray({
     value: values
   });
 }
-
 export default InputArray;

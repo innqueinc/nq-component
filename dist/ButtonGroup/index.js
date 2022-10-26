@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from "../classNames";
 import getValue from "../getValue";
-
 function ButtonGroup() {
   const [active, setActive] = React.useState(0);
   return /*#__PURE__*/React.createElement("div", {
@@ -16,5 +15,4 @@ function ButtonGroup() {
     className: classNames('btn', getValue(active === 1, 'btn-primary active', 'btn-light'))
   }, "Bill yearly"));
 }
-
 export default ButtonGroup;

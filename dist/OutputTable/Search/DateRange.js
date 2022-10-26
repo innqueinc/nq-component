@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-
 function DateRange({
   field,
   onChange
 }) {
   const [start, setStart] = useState();
   const [end, setEnd] = useState();
-
   function _onChange(startDate, endDate) {
     startDate.setHours(0, 0, 0, 0);
     endDate.setHours(23, 59, 59, 999);
@@ -17,19 +15,14 @@ function DateRange({
     };
     onChange(where);
   }
-
   function _onChangeStart(date) {
     setStart(date.toISOString().slice(0, 10));
-
     _onChange(date, new Date(end));
   }
-
   function _onChangeEnd(date) {
     setEnd(date.toISOString().slice(0, 10));
-
     _onChange(new Date(start), date);
   }
-
   React.useEffect(() => {
     const date = new Date();
     setStart(date.toISOString().slice(0, 10));
@@ -47,5 +40,4 @@ function DateRange({
     type: "date"
   }));
 }
-
 export default DateRange;

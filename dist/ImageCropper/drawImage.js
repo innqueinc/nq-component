@@ -5,5 +5,4 @@ function drawImage(c, image, cropper) {
   const height = cropper.photo.getHeight();
   c.drawImage(image, x, y, width, height);
 }
-
 export default drawImage;

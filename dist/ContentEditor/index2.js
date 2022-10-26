@@ -1,15 +1,11 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 import React from "react";
 import classNames from "../classNames";
-
 function noop() {}
-
 const defaultProps = {
   onReady: noop,
   onEnter: noop
 };
-
 function ContentEditor({
   className,
   onSubmit,
@@ -24,23 +20,19 @@ function ContentEditor({
     document.execCommand("defaultParagraphSeparator", false, "br");
     onReady(ref.current);
   }, [onReady]);
-
   function getElement(node) {
     return node.nodeType === Node.TEXT_NODE ? node.parentNode : node;
   }
-
   function placeHolderPrevent(e) {
     // prevent delete placeholder
     const selection = window.getSelection();
     const node = selection.anchorNode;
     const element = node.nodeType === Node.TEXT_NODE ? node.parentNode : node;
     const isPlaceholder = element.hasAttribute('data-placeholder');
-
     if (element.textContent.length <= 1 && isPlaceholder) {
       e.preventDefault();
       element.textContent = "";
     }
-
     if (element.textContent.length === 0 && isPlaceholder && element.previousSibling) {
       const range = selection.getRangeAt(0);
       const offset = element.previousSibling.textContent.length ? 1 : 0;
@@ -50,12 +42,10 @@ function ContentEditor({
       selection.addRange(range);
     }
   }
-
   function placeHolderNextSibling(e) {
     const selection = window.getSelection();
     const node = selection.anchorNode;
     const element = getElement(node);
-
     if (element.nextSibling && getElement(element.nextSibling).hasAttribute('data-placeholder')) {
       e.preventDefault();
       const range = selection.getRangeAt(0);
@@ -66,17 +56,14 @@ function ContentEditor({
       selection.addRange(range);
     }
   }
-
   function insertParagraph(e) {
     const selection = window.getSelection();
     const node = selection.anchorNode;
     const element = getElement(node);
-
     if (element.nodeName === 'P' && !element.nextSibling) {
       e.preventDefault();
       const p = document.createElement('p');
       const temp = document.createElement("br"); // temporary replace when user type
-
       p.append(temp);
       const editor = ref.current;
       editor.append(p);
@@ -87,39 +74,30 @@ function ContentEditor({
       selection.addRange(range);
     }
   }
-
   function insertBreak(e) {
     e.preventDefault();
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
     const br = document.createElement("br");
     const temp = document.createElement("br"); // temporary replace when user type
-
     range.deleteContents(); //required or not?
-
     range.insertNode(br);
     range.collapse(false); // collapse range to end
-
     range.insertNode(temp);
     range.selectNodeContents(temp); // select
     // add range to selection
-
     range.setStartAfter(br);
     range.setEndAfter(temp); // section to end
-
     selection.removeAllRanges();
     selection.addRange(range);
   }
-
   function onKeyUp(e) {}
-
   function onKeyDown(e) {
     switch (e.keyCode) {
       case 8:
         // delete
         placeHolderPrevent(e);
         break;
-
       case 13:
         // enter
         if (e.shiftKey) {
@@ -127,19 +105,15 @@ function ContentEditor({
           insertBreak(e);
           break;
         }
-
         if (onEnter(e)) {
           break;
         }
-
         insertParagraph(e);
         placeHolderNextSibling(e);
         break;
-
       default:
     }
   }
-
   return /*#__PURE__*/React.createElement("div", _extends({
     suppressContentEditableWarning: true,
     contentEditable: true,
@@ -149,6 +123,5 @@ function ContentEditor({
     className: classes
   }, props), children);
 }
-
 ContentEditor.defaultProps = defaultProps;
 export default ContentEditor;

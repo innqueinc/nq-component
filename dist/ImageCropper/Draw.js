@@ -1,5 +1,4 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 import React from "react";
 import Cropper from "./Cropper";
 import urlToImage from "../../urlToImage";
@@ -8,9 +7,7 @@ import getDistance from "../../getDistance";
 import PointerHandler from "../../PointerHandler";
 import drawPhoto from "./drawPhoto";
 import drawClip from "./drawClip";
-
 function noop() {}
-
 const defaultProps = {
   width: 500,
   height: 500,
@@ -23,7 +20,6 @@ const defaultProps = {
 let image;
 let pointer;
 let lastDistance;
-
 function ImageCropperControl(props) {
   const ref = React.useRef();
   const cropper = React.useMemo(() => {
@@ -40,13 +36,13 @@ function ImageCropperControl(props) {
     className: props.className,
     width: cropper.width,
     height: cropper.height,
-    style: { ...defaultStyle
+    style: {
+      ...defaultStyle
     }
   };
   React.useEffect(() => {
     loadImage(props.src);
   }, props.src);
-
   function loadImage(src) {
     if (typeof src === "string") {
       urlToImage(src, "anonymous").then(image => {
@@ -56,7 +52,6 @@ function ImageCropperControl(props) {
       blobToDataUrl(src).then(url => loadImage(url));
     }
   }
-
   function handleImageReady(img) {
     image = img;
     cropper.setCLip(props.width, props.height);
@@ -65,20 +60,16 @@ function ImageCropperControl(props) {
     pointer = new PointerHandler(canvas, handleEvent);
     draw();
   }
-
   function handleEvent() {
     const events = pointer.getEvents();
-
     if (events.length === 1) {
       const event = events[0];
-
       switch (event.type) {
         case 'pointerdown':
           lastDistance = null;
           cropper.photo.offset.x = event.x - cropper.photo.x;
           cropper.photo.offset.y = event.y - cropper.photo.y;
           break;
-
         case 'pointermove':
           if (lastDistance) return;
           cropper.movePhoto(event.x, event.y);
@@ -87,7 +78,6 @@ function ImageCropperControl(props) {
       }
     } else if (events.length === 2) {
       const zoom = getZoom(events);
-
       if (zoom) {
         const currentScale = cropper.photo.getScale() + zoom / 100;
         cropper.scalePhoto(currentScale);
@@ -95,36 +85,30 @@ function ImageCropperControl(props) {
       }
     }
   }
-
   function getZoom(events) {
     let zoom = false;
     const currentDistance = getDistance(events[0].x, events[0].y, events[1].x, events[1].y);
-
     if (lastDistance) {
       const distance = currentDistance - lastDistance;
       zoom = distance;
     }
-
     lastDistance = currentDistance;
     return zoom;
   }
-
   function draw() {
     const canvas = ref.current;
     const width = canvas.width;
     const height = canvas.height;
-    const c = canvas.getContext('2d'); // clear canvas
-
-    c.clearRect(0, 0, width, height); // start drawing
-
+    const c = canvas.getContext('2d');
+    // clear canvas
+    c.clearRect(0, 0, width, height);
+    // start drawing
     drawPhoto(c, image, cropper);
     drawClip(c, cropper, props.borderRadius);
   }
-
   return /*#__PURE__*/React.createElement("canvas", _extends({
     ref: ref
   }, attributes));
 }
-
 ImageCropperControl.defaultProps = defaultProps;
 export default ImageCropperControl;

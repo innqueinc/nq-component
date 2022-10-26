@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-
 function DateMonth({
   field,
   onChange
 }) {
   const [value, setValue] = useState();
-
   function _onChange(startDate) {
     const where = {};
     startDate.setHours(0, 0, 0, 0);
@@ -18,11 +16,9 @@ function DateMonth({
     onChange(where);
     setValue(endDate.toISOString().slice(0, 7));
   }
-
   React.useEffect(() => {
     const now = new Date();
     const date = new Date(now.getFullYear(), now.getMonth(), 1);
-
     _onChange(date);
   }, []);
   return /*#__PURE__*/React.createElement("input", {
@@ -32,5 +28,4 @@ function DateMonth({
     type: "month"
   });
 }
-
 export default DateMonth;

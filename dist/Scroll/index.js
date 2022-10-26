@@ -3,7 +3,6 @@ import InfiniteScroll from "react-infinite-scroller";
 const defaultProps = {
   hasMore: false
 };
-
 function Scroll({
   loadMore,
   hasMore,
@@ -15,6 +14,5 @@ function Scroll({
     initialLoad: true
   }, children);
 }
-
 Scroll.defaultProps = defaultProps;
 export default Scroll;

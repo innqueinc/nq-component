@@ -23,5 +23,4 @@ function ProgressNavigation() {
     className: "badge bg-white text-dark position-absolute top-0 translate-middle start-100"
   }, "3"));
 }
-
 export default ProgressNavigation;

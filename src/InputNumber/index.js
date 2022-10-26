@@ -9,12 +9,9 @@ const defaultProps = {
 
 function InputNumber({type, parse, className, maxLength, field, options, object, ...props}) {
     function onInput(e) {
-        const value = e.target.value;
+        const value = e.target.value.replace(/[^\d]/gi, '');
         e.target.setCustomValidity('');
-        e.target.value = value.replace(/[^\d]/gi, '');
-        if (value === '' || !e.target.validity.valid) {
-            return;
-        }
+        e.target.value = value
         if (maxLength && parseInt(maxLength) < value.length) {
             e.target.value = value.slice(0, parseInt(maxLength));
             return;

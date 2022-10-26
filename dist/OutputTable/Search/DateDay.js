@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-
 function DateDay({
   field,
   onChange
 }) {
   const [value, setValue] = useState();
-
   function _onChange(startDate) {
     setValue(startDate.toISOString().slice(0, 10));
     startDate.setHours(0, 0, 0, 0);
@@ -19,7 +17,6 @@ function DateDay({
     };
     onChange(where);
   }
-
   React.useEffect(() => {
     _onChange(new Date());
   }, []);
@@ -30,5 +27,4 @@ function DateDay({
     type: "date"
   });
 }
-
 export default DateDay;

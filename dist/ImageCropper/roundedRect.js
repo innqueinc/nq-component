@@ -10,5 +10,4 @@ function roundedRect(context, x, y, width, height, radius) {
     context.arc(x + radius, y + heightMinusRad, radius, Math.PI * 0.5, Math.PI);
   }
 }
-
 export default roundedRect;

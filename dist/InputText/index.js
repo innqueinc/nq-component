@@ -17,15 +17,12 @@ function InputText({
     object[field] = value;
   }
   const value = object[field];
-  const maxLength = props.maxLength;
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("textarea", _extends({
     defaultValue: value,
     className: classNames('form-control', className),
     name: field,
     onInput: onInput
-  }, props)), maxLength && /*#__PURE__*/React.createElement("span", {
-    className: "form-text fs-xs"
-  }, maxLength - value.length, " characters remaining"));
+  }, props)));
 }
 InputText.defaultProps = defaultProps;
 export default InputText;

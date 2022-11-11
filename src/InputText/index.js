@@ -11,9 +11,7 @@ function InputText({className, field, options, object, ...props}) {
         const value = e.target.value;
         object[field] = value;
     }
-
     const value = object[field];
-    const maxLength = props.maxLength;
     return (
         <>
              <textarea
@@ -22,7 +20,6 @@ function InputText({className, field, options, object, ...props}) {
                  name={field}
                  onInput={onInput}
                  {...props}/>
-            {maxLength && <span className="form-text fs-xs">{maxLength - value.length} characters remaining</span>}
         </>
 
     )

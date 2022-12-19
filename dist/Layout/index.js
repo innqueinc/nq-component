@@ -4,7 +4,7 @@ function Layout({
   children,
   ...props
 }) {
-  const [collapsed, setCollapse] = React.useState(true);
+  const [collapsed, setCollapse] = React.useState(false);
   function getValue() {
     return {
       collapsed,

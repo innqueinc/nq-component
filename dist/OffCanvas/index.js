@@ -150,24 +150,27 @@ class OffCanvas extends React.Component {
       ...defaultStyles.overlay,
       ...this.props.styles.overlay
     };
+    const useTouch = this.state.dragSupported;
     dragHandleStyle.width = this.props.touchHandleWidth;
     const sidebarProps = {};
-    if (this.props.show) {
-      sidebarProps.onTouchStart = this.onTouchStart;
-      sidebarProps.onTouchMove = this.onTouchMove;
-      sidebarProps.onTouchEnd = this.onTouchEnd;
-      sidebarProps.onTouchCancel = this.onTouchEnd;
-      sidebarProps.onScroll = this.onScroll;
-      overlayStyle.opacity = 1;
-      overlayStyle.visibility = "visible";
-    } else {
-      dragHandle = /*#__PURE__*/React.createElement("div", {
-        style: dragHandleStyle,
-        onTouchStart: this.onTouchStart,
-        onTouchMove: this.onTouchMove,
-        onTouchEnd: this.onTouchEnd,
-        onTouchCancel: this.onTouchEnd
-      });
+    if (useTouch) {
+      if (this.props.show) {
+        sidebarProps.onTouchStart = this.onTouchStart;
+        sidebarProps.onTouchMove = this.onTouchMove;
+        sidebarProps.onTouchEnd = this.onTouchEnd;
+        sidebarProps.onTouchCancel = this.onTouchEnd;
+        sidebarProps.onScroll = this.onScroll;
+        overlayStyle.opacity = 1;
+        overlayStyle.visibility = "visible";
+      } else {
+        dragHandle = /*#__PURE__*/React.createElement("div", {
+          style: dragHandleStyle,
+          onTouchStart: this.onTouchStart,
+          onTouchMove: this.onTouchMove,
+          onTouchEnd: this.onTouchEnd,
+          onTouchCancel: this.onTouchEnd
+        });
+      }
     }
     const classes = classNames('offcanvas offcanvas-start sidebar-nav bg-dark visible', this.props.show ? 'show' : '');
     const isTouching = this.isTouching();

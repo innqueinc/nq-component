@@ -1,7 +1,6 @@
 import React from "react";
 import OutputFactory from "../OutputFactory";
 import Progress from "../Progress";
-import InfiniteScroll from "react-infinite-scroller";
 import Checkbox from "../Checkbox";
 
 const noop = () => {
@@ -38,7 +37,7 @@ function Table({
                    actions
                }) {
     return (
-        <InfiniteScroll
+        <div
             className={className}
             loadMore={next}
             hasMore={hasMore}
@@ -147,7 +146,7 @@ function Table({
                     </tbody>
                 </table>
             </div>
-        </InfiniteScroll>
+        </div>
     )
 }
 

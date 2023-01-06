@@ -2,7 +2,6 @@ import React from "react";
 import camelToTitleCase from "../camelToTitleCase";
 import OutputFactory from "../OutputFactory";
 import Search from "./Search";
-import InfiniteScroll from "react-infinite-scroller";
 import Checkbox from "../Checkbox";
 import Progress from "../Progress";
 
@@ -83,7 +82,7 @@ function OutputTable({collection, fields, limit, onItemClick, find}) {
     }
 
     return (
-        <InfiniteScroll
+        <div
             className="custom-class"
             loadMore={next}
             hasMore={hasMore}>
@@ -170,7 +169,7 @@ function OutputTable({collection, fields, limit, onItemClick, find}) {
                     </tbody>
                 </table>
             </div>
-        </InfiniteScroll>
+        </div>
     )
 }
 

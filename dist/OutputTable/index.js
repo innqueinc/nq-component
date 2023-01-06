@@ -3,7 +3,6 @@ import React from "react";
 import camelToTitleCase from "../camelToTitleCase";
 import OutputFactory from "../OutputFactory";
 import Search from "./Search";
-import InfiniteScroll from "react-infinite-scroller";
 import Checkbox from "../Checkbox";
 import Progress from "../Progress";
 const fields = {};
@@ -83,7 +82,7 @@ function OutputTable({
       getData();
     }
   }
-  return /*#__PURE__*/React.createElement(InfiniteScroll, {
+  return /*#__PURE__*/React.createElement("div", {
     className: "custom-class",
     loadMore: next,
     hasMore: hasMore

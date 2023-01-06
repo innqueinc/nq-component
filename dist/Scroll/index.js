@@ -1,5 +1,4 @@
 import React from "react";
-import InfiniteScroll from "react-infinite-scroller";
 const defaultProps = {
   hasMore: false
 };
@@ -8,7 +7,7 @@ function Scroll({
   hasMore,
   children
 }) {
-  return /*#__PURE__*/React.createElement(InfiniteScroll, {
+  return /*#__PURE__*/React.createElement("div", {
     loadMore: loadMore,
     hasMore: hasMore,
     initialLoad: true

@@ -2,7 +2,6 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 import React from "react";
 import OutputFactory from "../OutputFactory";
 import Progress from "../Progress";
-import InfiniteScroll from "react-infinite-scroller";
 import Checkbox from "../Checkbox";
 const noop = () => {};
 const defaultProps = {
@@ -35,7 +34,7 @@ function Table({
   transformLabel,
   actions
 }) {
-  return /*#__PURE__*/React.createElement(InfiniteScroll, {
+  return /*#__PURE__*/React.createElement("div", {
     className: className,
     loadMore: next,
     hasMore: hasMore,
